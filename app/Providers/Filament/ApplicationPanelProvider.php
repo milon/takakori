@@ -20,14 +20,14 @@ use Illuminate\Session\Middleware\StartSession;
 use Illuminate\View\Middleware\ShareErrorsFromSession;
 use Jeffgreco13\FilamentBreezy\BreezyCore;
 
-class AdminPanelProvider extends PanelProvider
+class ApplicationPanelProvider extends PanelProvider
 {
     public function panel(Panel $panel): Panel
     {
         return $panel
             ->default()
-            ->id('admin')
-            ->path('admin')
+            ->id('app')
+            ->path('/')
             ->login()
             ->registration(Register::class)
             ->colors([
@@ -60,7 +60,7 @@ class AdminPanelProvider extends PanelProvider
             ->plugins([
                 BreezyCore::make()
                 ->myProfile(
-                    
+
                 ),
             ]);
     }
