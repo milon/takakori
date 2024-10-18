@@ -8,6 +8,7 @@ use Filament\Models\Contracts\HasAvatar;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
+use Illuminate\Support\Facades\Storage;
 
 class User extends Authenticatable implements HasAvatar
 {
@@ -23,6 +24,8 @@ class User extends Authenticatable implements HasAvatar
         'name',
         'email',
         'password',
+        'is_admin',
+        'avatar_url',
     ];
 
     /**
@@ -45,11 +48,12 @@ class User extends Authenticatable implements HasAvatar
         return [
             'email_verified_at' => 'datetime',
             'password' => 'hashed',
+            'is_admin' => 'boolean',
         ];
     }
 
     public function getFilamentAvatarUrl(): ?string
     {
-        return $this->avatar_url;
+        return $this->avatar_url ? Storage::url($this->avatar_url) : null;
     }
 }

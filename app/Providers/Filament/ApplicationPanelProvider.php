@@ -6,6 +6,7 @@ use App\Filament\Pages\Auth\Register;
 use Filament\Http\Middleware\Authenticate;
 use Filament\Http\Middleware\DisableBladeIconComponents;
 use Filament\Http\Middleware\DispatchServingFilamentEvent;
+use Filament\Models\Contracts\HasAvatar;
 use Filament\Pages;
 use Filament\Panel;
 use Filament\PanelProvider;
@@ -59,9 +60,14 @@ class ApplicationPanelProvider extends PanelProvider
             ])
             ->plugins([
                 BreezyCore::make()
-                ->myProfile(
-
-                ),
+                ->myProfile(hasAvatars: true)
+                ->avatarUploadComponent(
+                    fn($fileUpload) => $fileUpload
+                        ->avatar()
+                        ->disableLabel()
+                        ->directory('avatar')
+                        ->circleCropper()
+                    )
             ]);
     }
 }
