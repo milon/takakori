@@ -7,6 +7,7 @@ use Filament\Http\Middleware\Authenticate;
 use Filament\Http\Middleware\DisableBladeIconComponents;
 use Filament\Http\Middleware\DispatchServingFilamentEvent;
 use Filament\Models\Contracts\HasAvatar;
+use Filament\Navigation\NavigationGroup;
 use Filament\Pages;
 use Filament\Panel;
 use Filament\PanelProvider;
@@ -34,7 +35,17 @@ class ApplicationPanelProvider extends PanelProvider
             ->brandLogoHeight('3rem')
             ->spa()
             ->login()
-            ->registration(Register::class)
+            ->registration()
+            ->passwordReset()
+            ->emailVerification()
+            ->profile()
+            ->sidebarCollapsibleOnDesktop()
+            ->navigationGroups([
+                NavigationGroup::make('Accounts')
+                    ->icon('heroicon-o-banknotes'),
+                NavigationGroup::make('Settings')
+                    ->icon('heroicon-o-cog-6-tooth'),
+            ])
             ->colors([
                 'primary' => Color::Zinc,
             ])
