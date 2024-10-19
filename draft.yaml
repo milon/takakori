@@ -1,15 +1,19 @@
 models:
   Account:
     user_id: unsigned integer
-    account_name: string
-    account_type: string
+    currency_id: unsigned integer
+    name: string
+    type: string
     balance: integer
+    currency: string
     relationships:
-      belongsTo: User
+      belongsTo: User, Currency
+      hasMany: Transaction
 
   Category:
     user_id: unsigned integer
     name: string
+    type: string
     relationships:
       belongsTo: User
 
@@ -17,23 +21,54 @@ models:
     user_id: unsigned integer
     account_id: unsigned integer
     category_id: unsigned integer
+    currency_id: unsigned integer
     transaction_type: string
     amount: integer
     date: datetime
     description: text
     relationships:
-      belongsTo: User, Account, Category
-      belongsToMany: Tag
-
+      belongsTo: User, Account, Category, Currency
+      hasMany: Tag
 
   Budget:
     user_id: unsigned integer
     category_id: unsigned integer
+    currency_id: unsigned integer
     amount: integer
     start_date: date
     end_date: date
     relationships:
-      belongsTo: User, Category
+      belongsTo: User, Category, Currency
+
+  Goal:
+    user_id: unsigned integer
+    currency_id: unsigned integer
+    name: string
+    target_amount: integer
+    current_amount: integer
+    deadline: date
+    relationships:
+      belongsTo: User
+
+  RecurringTransaction:
+    user_id: unsigned integer
+    account_id: unsigned integer
+    category_id: unsigned integer
+    currency_id: unsigned integer
+    transaction_type: string
+    amount: integer
+    frequency: string
+    start_date: date
+    end_date: date nullable
+    relationships:
+      belongsTo: User, Account, Category, Currency
+
+  User:
+    name: string
+    email: string
+    password: string
+    relationships:
+      hasMany: Account, Category, Transaction, Budget, Goal, RecurringTransaction
 
   Tag:
     user_id: unsigned integer
@@ -41,3 +76,46 @@ models:
     relationships:
       belongsTo: User
       belongsToMany: Transaction
+
+  Investment:
+    user_id: unsigned integer
+    name: string
+    type: string
+    purchase_date: date
+    purchase_price: integer
+    current_price: integer
+    quantity: integer
+    currency_id: unsigned integer
+    relationships:
+      belongsTo: User
+
+  BillReminder:
+    user_id: unsigned integer
+    category_id: unsigned integer
+    currency_id: unsigned integer
+    name: string
+    amount: integer
+    due_date: date
+    frequency: string
+    is_paid: boolean
+    relationships:
+      belongsTo: User, Category, Currency
+
+  Debt:
+    user_id: unsigned integer
+    name: string
+    type: string
+    interest_rate: float
+    initial_amount: integer
+    current_balance: integer
+    min_payment: integer
+    due_date: date
+    currency_id: unsigned integer
+    relationships:
+      belongsTo: User, Currency
+
+  Currency:
+    name: string
+    code: string
+    relationships:
+      hasMany: Account, Investment, BillReminder, Debt
