@@ -29,6 +29,7 @@ class ApplicationPanelProvider extends PanelProvider
             ->default()
             ->id('app')
             ->path('/')
+            ->spa()
             ->login()
             ->registration(Register::class)
             ->colors([
