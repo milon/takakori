@@ -12,6 +12,7 @@ use Filament\Tables;
 use Filament\Tables\Table;
 use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\SoftDeletingScope;
+use Illuminate\Support\Facades\Auth;
 
 class UserResource extends Resource
 {
@@ -30,13 +31,16 @@ class UserResource extends Resource
                     ->required(),
                 Forms\Components\TextInput::make('password')
                     ->password()
-                    ->required(),
+                    ->required()
+                    ->hiddenOn('edit'),
                 Forms\Components\ToggleButtons::make('is_admin')
                     ->boolean()
                     ->inline()
                     ->default(false)
                     ->required(),
-                Forms\Components\TextInput::make('avatar_url'),
+                Forms\Components\FileUpload::make('avatar_url')
+                    ->label('Avatar')
+                    ->avatar(),
             ]);
     }
 
@@ -90,5 +94,10 @@ class UserResource extends Resource
             'create' => Pages\CreateUser::route('/create'),
             'edit' => Pages\EditUser::route('/{record}/edit'),
         ];
+    }
+
+    public static function canViewAny(): bool
+    {
+        return Auth::user()->is_admin == true;
     }
 }
