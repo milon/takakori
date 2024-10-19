@@ -29,6 +29,9 @@ class ApplicationPanelProvider extends PanelProvider
             ->default()
             ->id('app')
             ->path('/')
+            ->brandLogo(fn() => view('filament.logo.light'))
+            ->darkModeBrandLogo(fn() => view('filament.logo.dark'))
+            ->brandLogoHeight('3rem')
             ->spa()
             ->login()
             ->registration(Register::class)
@@ -66,7 +69,6 @@ class ApplicationPanelProvider extends PanelProvider
                     fn($fileUpload) => $fileUpload
                         ->avatar()
                         ->disableLabel()
-                        ->directory('avatar')
                         ->circleCropper()
                     )
             ]);
