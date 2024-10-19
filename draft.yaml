@@ -1,0 +1,43 @@
+models:
+  Account:
+    user_id: unsigned integer
+    account_name: string
+    account_type: string
+    balance: integer
+    relationships:
+      belongsTo: User
+
+  Category:
+    user_id: unsigned integer
+    name: string
+    relationships:
+      belongsTo: User
+
+  Transaction:
+    user_id: unsigned integer
+    account_id: unsigned integer
+    category_id: unsigned integer
+    transaction_type: string
+    amount: integer
+    date: datetime
+    description: text
+    relationships:
+      belongsTo: User, Account, Category
+      belongsToMany: Tag
+
+
+  Budget:
+    user_id: unsigned integer
+    category_id: unsigned integer
+    amount: integer
+    start_date: date
+    end_date: date
+    relationships:
+      belongsTo: User, Category
+
+  Tag:
+    user_id: unsigned integer
+    name: string
+    relationships:
+      belongsTo: User
+      belongsToMany: Transaction
