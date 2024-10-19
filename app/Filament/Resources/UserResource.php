@@ -7,8 +7,14 @@ use App\Filament\Resources\UserResource\RelationManagers;
 use App\Models\User;
 use Filament\Forms;
 use Filament\Forms\Form;
+use Filament\Infolists\Components\Group;
+use Filament\Infolists\Components\ImageEntry;
+use Filament\Infolists\Components\Section;
+use Filament\Infolists\Components\TextEntry;
+use Filament\Infolists\Infolist;
 use Filament\Resources\Resource;
 use Filament\Tables;
+use Filament\Tables\Filters\Filter;
 use Filament\Tables\Table;
 use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\SoftDeletingScope;
@@ -68,16 +74,43 @@ class UserResource extends Resource
                     ->toggleable(isToggledHiddenByDefault: true),
             ])
             ->filters([
-                //
+                Filter::make('is_admin')
+                    ->label('Show only admin users')
+                    ->query(fn(Builder $query): Builder => $query->where('is_admin', true))
+                    ->toggle(),
             ])
             ->actions([
-                Tables\Actions\EditAction::make(),
+                Tables\Actions\EditAction::make()
+                    ->slideOver(),
+                Tables\Actions\ViewAction::make(),
             ])
             ->bulkActions([
                 Tables\Actions\BulkActionGroup::make([
                     Tables\Actions\DeleteBulkAction::make(),
                 ]),
             ]);
+    }
+
+    public static function infolist(Infolist $infolist): Infolist
+    {
+        return $infolist->schema([
+            Section::make('Personal Information')
+                ->columns(3)
+                ->schema([
+                    ImageEntry::make('avatar_url')
+                        ->label('Avatar')
+                        ->defaultImageUrl(fn($record) => get_default_avatar($record->name))
+                        ->circular(),
+                    Group::make()
+                        ->columnSpan(2)
+                        ->columns(2)
+                        ->schema([
+                            TextEntry::make('name'),
+                            TextEntry::make('email'),
+                            TextEntry::make('created_at')->since(),
+                        ]),
+                ]),
+        ]);
     }
 
     public static function getRelations(): array
@@ -92,7 +125,7 @@ class UserResource extends Resource
         return [
             'index' => Pages\ListUsers::route('/'),
             'create' => Pages\CreateUser::route('/create'),
-            'edit' => Pages\EditUser::route('/{record}/edit'),
+            'view' => Pages\ViewUser::route('/{record}')
         ];
     }
 
