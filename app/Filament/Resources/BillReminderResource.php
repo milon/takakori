@@ -15,6 +15,8 @@ use Filament\Tables\Filters\SelectFilter;
 use Filament\Tables\Table;
 use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\SoftDeletingScope;
+use Pelmered\FilamentMoneyField\Forms\Components\MoneyInput;
+use Pelmered\FilamentMoneyField\Tables\Columns\MoneyColumn;
 
 class BillReminderResource extends Resource
 {
@@ -44,7 +46,7 @@ class BillReminderResource extends Resource
                     ->required(),
                 Forms\Components\TextInput::make('name')
                     ->required(),
-                Forms\Components\TextInput::make('amount')
+                MoneyInput::make('amount')
                     ->required()
                     ->numeric(),
                 Forms\Components\DatePicker::make('due_date')
@@ -71,7 +73,7 @@ class BillReminderResource extends Resource
                 Tables\Columns\TextColumn::make('name')
                     ->searchable(),
                 Tables\Columns\TextColumn::make('currency.code'),
-                Tables\Columns\TextColumn::make('amount')
+                MoneyColumn::make('amount')
                     ->numeric()
                     ->sortable(),
                 Tables\Columns\TextColumn::make('due_date')

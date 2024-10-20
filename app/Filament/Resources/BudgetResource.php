@@ -8,7 +8,10 @@ use Filament\Forms;
 use Filament\Forms\Form;
 use Filament\Resources\Resource;
 use Filament\Tables;
+use Filament\Tables\Filters\SelectFilter;
 use Filament\Tables\Table;
+use Pelmered\FilamentMoneyField\Forms\Components\MoneyInput;
+use Pelmered\FilamentMoneyField\Tables\Columns\MoneyColumn;
 
 class BudgetResource extends Resource
 {
@@ -28,12 +31,18 @@ class BudgetResource extends Resource
                 Forms\Components\Select::make('category_id')
                     ->relationship('category', 'name')
                     ->required(),
-                Forms\Components\TextInput::make('amount')
+                Forms\Components\Select::make('currency_id')
+                    ->relationship('currency', 'name')
+                    ->preload()
+                    ->required(),
+                MoneyInput::make('amount')
                     ->required()
                     ->numeric(),
                 Forms\Components\DatePicker::make('start_date')
+                    ->native(false)
                     ->required(),
                 Forms\Components\DatePicker::make('end_date')
+                    ->native(false)
                     ->required(),
             ]);
     }
@@ -44,11 +53,13 @@ class BudgetResource extends Resource
             ->columns([
                 Tables\Columns\TextColumn::make('user.name')
                     ->numeric()
-                    ->sortable(),
+                    ->sortable()
+                    ->searchable(),
                 Tables\Columns\TextColumn::make('category.name')
                     ->numeric()
                     ->sortable(),
-                Tables\Columns\TextColumn::make('amount')
+                Tables\Columns\TextColumn::make('currency.code'),
+                MoneyColumn::make('amount')
                     ->numeric()
                     ->sortable(),
                 Tables\Columns\TextColumn::make('start_date')
@@ -67,10 +78,12 @@ class BudgetResource extends Resource
                     ->toggleable(isToggledHiddenByDefault: true),
             ])
             ->filters([
-                //
+                SelectFilter::make('Category')->relationship('category', 'name')->preload()->searchable(),
+                SelectFilter::make('Currency')->relationship('currency', 'code')->preload(),
             ])
             ->actions([
                 Tables\Actions\EditAction::make(),
+                Tables\Actions\DeleteAction::make()->requiresConfirmation(),
             ])
             ->bulkActions([
                 Tables\Actions\BulkActionGroup::make([
@@ -90,8 +103,8 @@ class BudgetResource extends Resource
     {
         return [
             'index' => Pages\ListBudgets::route('/'),
-            'create' => Pages\CreateBudget::route('/create'),
-            'edit' => Pages\EditBudget::route('/{record}/edit'),
+            // 'create' => Pages\CreateBudget::route('/create'),
+            // 'edit' => Pages\EditBudget::route('/{record}/edit'),
         ];
     }
 }
