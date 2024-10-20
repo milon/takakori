@@ -3,9 +3,6 @@
 namespace Database\Factories;
 
 use App\Models\Budget;
-use App\Models\Category;
-use App\Models\Currency;
-use App\Models\User;
 use Illuminate\Database\Eloquent\Factories\Factory;
 
 class BudgetFactory extends Factory

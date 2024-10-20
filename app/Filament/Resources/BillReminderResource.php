@@ -4,7 +4,6 @@ namespace App\Filament\Resources;
 
 use App\Enums\BillReminderFrequency;
 use App\Filament\Resources\BillReminderResource\Pages;
-use App\Filament\Resources\BillReminderResource\RelationManagers;
 use App\Models\BillReminder;
 use Filament\Forms;
 use Filament\Forms\Form;
@@ -14,7 +13,6 @@ use Filament\Tables\Filters\Filter;
 use Filament\Tables\Filters\SelectFilter;
 use Filament\Tables\Table;
 use Illuminate\Database\Eloquent\Builder;
-use Illuminate\Database\Eloquent\SoftDeletingScope;
 use Pelmered\FilamentMoneyField\Forms\Components\MoneyInput;
 use Pelmered\FilamentMoneyField\Tables\Columns\MoneyColumn;
 
@@ -99,7 +97,7 @@ class BillReminderResource extends Resource
                 SelectFilter::make('Currency')->relationship('currency', 'code')->preload(),
                 Filter::make('is_paid')
                     ->label('Show only unpaid bills')
-                    ->query(fn(Builder $query): Builder => $query->where('is_paid', false))
+                    ->query(fn (Builder $query): Builder => $query->where('is_paid', false))
                     ->toggle(),
             ])
             ->actions([

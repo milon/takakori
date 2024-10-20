@@ -26,5 +26,4 @@ enum BillReminderFrequency: string implements HasLabel
             self::Annually => 'Annually',
         };
     }
-
 }

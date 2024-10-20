@@ -7,6 +7,7 @@ use App\Models\BillReminder;
 use App\Models\Budget;
 use App\Models\Category;
 use App\Models\Debt;
+use App\Models\Goal;
 use App\Models\Tag;
 use App\Models\User;
 // use Illuminate\Database\Console\Seeds\WithoutModelEvents;
@@ -31,5 +32,6 @@ class DatabaseSeeder extends Seeder
         BillReminder::factory(20)->create();
         Budget::factory(15)->create();
         Debt::factory(15)->create();
+        Goal::factory(15)->create();
     }
 }

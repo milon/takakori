@@ -3,7 +3,6 @@
 namespace App\Filament\Resources;
 
 use App\Filament\Resources\GoalResource\Pages;
-use App\Filament\Resources\GoalResource\RelationManagers;
 use App\Models\Goal;
 use Filament\Forms;
 use Filament\Forms\Form;
@@ -11,8 +10,6 @@ use Filament\Resources\Resource;
 use Filament\Tables;
 use Filament\Tables\Filters\SelectFilter;
 use Filament\Tables\Table;
-use Illuminate\Database\Eloquent\Builder;
-use Illuminate\Database\Eloquent\SoftDeletingScope;
 use Pelmered\FilamentMoneyField\Forms\Components\MoneyInput;
 
 class GoalResource extends Resource

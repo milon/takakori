@@ -5,7 +5,7 @@ namespace App\Enums;
 use Filament\Support\Contracts\HasIcon;
 use Filament\Support\Contracts\HasLabel;
 
-enum DebtType: string implements HasLabel, HasIcon
+enum DebtType: string implements HasIcon, HasLabel
 {
     case PersonalLoan = 'personal-loan';
     case Mortgage = 'mortgage';
@@ -34,5 +34,4 @@ enum DebtType: string implements HasLabel, HasIcon
             self::Other => 'fas-money-check-dollar',
         };
     }
-
 }

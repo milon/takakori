@@ -3,9 +3,7 @@
 namespace Database\Factories;
 
 use App\Enums\DebtType;
-use App\Models\Currency;
 use App\Models\Debt;
-use App\Models\User;
 use Illuminate\Database\Eloquent\Factories\Factory;
 
 class DebtFactory extends Factory

@@ -4,9 +4,6 @@ namespace Database\Factories;
 
 use App\Enums\BillReminderFrequency;
 use App\Models\BillReminder;
-use App\Models\Category;
-use App\Models\Currency;
-use App\Models\User;
 use Illuminate\Database\Eloquent\Factories\Factory;
 
 class BillReminderFactory extends Factory
