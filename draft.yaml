@@ -20,7 +20,6 @@ models:
     account_id: unsigned integer
     category_id: unsigned integer
     currency_id: unsigned integer
-    transaction_type: string
     amount: integer
     date: datetime
     description: text

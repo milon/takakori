@@ -21,14 +21,14 @@ class InvestmentFactory extends Factory
     public function definition(): array
     {
         return [
-            'user_id' => User::factory(),
+            'user_id' => rand(1, 20),
             'name' => $this->faker->name(),
             'type' => $this->faker->word(),
-            'purchase_date' => $this->faker->date(),
+            'purchase_date' => $this->faker->dateTimeBetween(now()->subYears(2), now()->addYears(3)),
             'purchase_price' => $this->faker->numberBetween(-10000, 10000),
             'current_price' => $this->faker->numberBetween(-10000, 10000),
-            'quantity' => $this->faker->numberBetween(-10000, 10000),
-            'currency_id' => $this->faker->randomNumber(),
+            'quantity' => $this->faker->numberBetween(1, 10),
+            'currency_id' => rand(1, 4),
         ];
     }
 }

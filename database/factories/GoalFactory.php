@@ -21,12 +21,12 @@ class GoalFactory extends Factory
     public function definition(): array
     {
         return [
-            'user_id' => User::factory(),
+            'user_id' => rand(1, 20),
             'currency_id' => $this->faker->randomNumber(),
             'name' => $this->faker->name(),
             'target_amount' => $this->faker->numberBetween(-10000, 10000),
             'current_amount' => $this->faker->numberBetween(-10000, 10000),
-            'deadline' => $this->faker->date(),
+            'deadline' => $this->faker->dateTimeBetween(now(), now()->addYears(3)),
         ];
     }
 }

@@ -3,6 +3,7 @@
 namespace Database\Seeders;
 
 use App\Models\Account;
+use App\Models\BillReminder;
 use App\Models\Category;
 use App\Models\Tag;
 use App\Models\User;
@@ -25,5 +26,6 @@ class DatabaseSeeder extends Seeder
         Tag::factory(30)->create();
         Category::factory(10)->create();
         Account::factory(50)->create();
+        BillReminder::factory(20)->create();
     }
 }

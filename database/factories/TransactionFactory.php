@@ -24,11 +24,10 @@ class TransactionFactory extends Factory
     public function definition(): array
     {
         return [
-            'user_id' => User::factory(),
-            'account_id' => Account::factory(),
-            'category_id' => Category::factory(),
-            'currency_id' => Currency::factory(),
-            'transaction_type' => $this->faker->word(),
+            'user_id' => rand(1, 20),
+            'account_id' => rand(1, 20),
+            'category_id' => rand(1, 20),
+            'currency_id' => rand(1, 4),
             'amount' => $this->faker->numberBetween(-10000, 10000),
             'date' => $this->faker->dateTime(),
             'description' => $this->faker->text(),

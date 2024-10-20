@@ -2,6 +2,7 @@
 
 namespace Database\Factories;
 
+use App\Enums\BillReminderFrequency;
 use App\Models\BillReminder;
 use App\Models\Category;
 use App\Models\Currency;
@@ -23,13 +24,13 @@ class BillReminderFactory extends Factory
     public function definition(): array
     {
         return [
-            'user_id' => User::factory(),
-            'category_id' => Category::factory(),
-            'currency_id' => Currency::factory(),
+            'user_id' => rand(1, 25),
+            'category_id' => rand(1, 10),
+            'currency_id' => rand(1, 4),
             'name' => $this->faker->name(),
-            'amount' => $this->faker->numberBetween(-10000, 10000),
-            'due_date' => $this->faker->date(),
-            'frequency' => $this->faker->word(),
+            'amount' => $this->faker->numberBetween(1, 10000),
+            'due_date' => $this->faker->dateTimeBetween(now()->subYears(2), now()->addYears(3)),
+            'frequency' => $this->faker->randomElement(array_column(BillReminderFrequency::cases(), 'value')),
             'is_paid' => $this->faker->boolean(),
         ];
     }

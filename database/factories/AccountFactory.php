@@ -22,7 +22,7 @@ class AccountFactory extends Factory
         return [
             'user_id' => rand(1, 20),
             'currency_id' => rand(1, 4),
-            'name' => $this->faker->words(),
+            'name' => $this->faker->words(2, true),
             'type' => $this->faker->randomElement(['savings', 'checking', 'credit-card']),
             'balance' => $this->faker->numberBetween(-10000, 10000),
         ];

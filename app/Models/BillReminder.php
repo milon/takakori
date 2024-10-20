@@ -2,6 +2,7 @@
 
 namespace App\Models;
 
+use App\Enums\BillReminderFrequency;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
@@ -38,6 +39,7 @@ class BillReminder extends Model
         'currency_id' => 'integer',
         'due_date' => 'date',
         'is_paid' => 'boolean',
+        'frequency' => BillReminderFrequency::class,
     ];
 
     public function user(): BelongsTo

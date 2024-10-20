@@ -51,13 +51,12 @@ class AccountResource extends Resource
                 Tables\Columns\TextColumn::make('user.name')
                     ->numeric()
                     ->sortable(),
-                Tables\Columns\TextColumn::make('currency.code')
-                    ->numeric()
-                    ->sortable(),
                 Tables\Columns\TextColumn::make('name')
                     ->searchable(),
                 Tables\Columns\TextColumn::make('type')
                     ->badge(),
+                Tables\Columns\TextColumn::make('currency.code')
+                    ->sortable(),
                 MoneyColumn::make('balance')
                     ->numeric()
                     ->sortable(),
