@@ -22,10 +22,10 @@ class GoalFactory extends Factory
     {
         return [
             'user_id' => rand(1, 20),
-            'currency_id' => $this->faker->randomNumber(),
-            'name' => $this->faker->name(),
-            'target_amount' => $this->faker->numberBetween(-10000, 10000),
-            'current_amount' => $this->faker->numberBetween(-10000, 10000),
+            'currency_id' => rand(1, 4),
+            'name' => $this->faker->words(2, true),
+            'target_amount' => $this->faker->numberBetween(10, 10000),
+            'current_amount' => $this->faker->numberBetween(100, 9000),
             'deadline' => $this->faker->dateTimeBetween(now(), now()->addYears(3)),
         ];
     }

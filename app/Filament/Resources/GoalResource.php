@@ -3,11 +3,17 @@
 namespace App\Filament\Resources;
 
 use App\Filament\Resources\GoalResource\Pages;
+use App\Filament\Resources\GoalResource\RelationManagers;
 use App\Models\Goal;
+use Filament\Forms;
 use Filament\Forms\Form;
 use Filament\Resources\Resource;
 use Filament\Tables;
+use Filament\Tables\Filters\SelectFilter;
 use Filament\Tables\Table;
+use Illuminate\Database\Eloquent\Builder;
+use Illuminate\Database\Eloquent\SoftDeletingScope;
+use Pelmered\FilamentMoneyField\Forms\Components\MoneyInput;
 
 class GoalResource extends Resource
 {
@@ -21,7 +27,25 @@ class GoalResource extends Resource
     {
         return $form
             ->schema([
-                //
+                Forms\Components\Select::make('user_id')
+                    ->relationship('user', 'name')
+                    ->preload()
+                    ->searchable()
+                    ->required(),
+                Forms\Components\Select::make('currency_id')
+                    ->relationship('currency', 'name')
+                    ->required(),
+                Forms\Components\TextInput::make('name')
+                    ->required(),
+                MoneyInput::make('target_amount')
+                    ->required()
+                    ->numeric(),
+                MoneyInput::make('current_amount')
+                    ->required()
+                    ->numeric(),
+                Forms\Components\DatePicker::make('deadline')
+                    ->native(false)
+                    ->required(),
             ]);
     }
 
@@ -29,13 +53,39 @@ class GoalResource extends Resource
     {
         return $table
             ->columns([
-                //
+                Tables\Columns\TextColumn::make('user.name')
+                    ->numeric()
+                    ->searchable()
+                    ->sortable(),
+                Tables\Columns\TextColumn::make('name')
+                    ->searchable(),
+                Tables\Columns\TextColumn::make('currency.code')
+                    ->numeric()
+                    ->sortable(),
+                Tables\Columns\TextColumn::make('target_amount')
+                    ->numeric()
+                    ->sortable(),
+                Tables\Columns\TextColumn::make('current_amount')
+                    ->numeric()
+                    ->sortable(),
+                Tables\Columns\TextColumn::make('deadline')
+                    ->date()
+                    ->sortable(),
+                Tables\Columns\TextColumn::make('created_at')
+                    ->dateTime()
+                    ->sortable()
+                    ->toggleable(isToggledHiddenByDefault: true),
+                Tables\Columns\TextColumn::make('updated_at')
+                    ->dateTime()
+                    ->sortable()
+                    ->toggleable(isToggledHiddenByDefault: true),
             ])
             ->filters([
-                //
+                SelectFilter::make('Currency')->relationship('currency', 'code')->preload(),
             ])
             ->actions([
                 Tables\Actions\EditAction::make(),
+                Tables\Actions\DeleteAction::make()->requiresConfirmation(),
             ])
             ->bulkActions([
                 Tables\Actions\BulkActionGroup::make([
