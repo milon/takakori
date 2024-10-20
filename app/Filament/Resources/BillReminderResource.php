@@ -3,7 +3,6 @@
 namespace App\Filament\Resources;
 
 use App\Enums\BillingFrequency;
-use App\Enums\BillReminderFrequency;
 use App\Filament\Resources\BillReminderResource\Pages;
 use App\Models\BillReminder;
 use Filament\Forms;

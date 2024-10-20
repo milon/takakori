@@ -4,15 +4,12 @@ namespace App\Filament\Resources;
 
 use App\Enums\BillingFrequency;
 use App\Filament\Resources\RecurringTransactionResource\Pages;
-use App\Filament\Resources\RecurringTransactionResource\RelationManagers;
 use App\Models\RecurringTransaction;
 use Filament\Forms;
 use Filament\Forms\Form;
 use Filament\Resources\Resource;
 use Filament\Tables;
 use Filament\Tables\Table;
-use Illuminate\Database\Eloquent\Builder;
-use Illuminate\Database\Eloquent\SoftDeletingScope;
 use Pelmered\FilamentMoneyField\Forms\Components\MoneyInput;
 use Pelmered\FilamentMoneyField\Tables\Columns\MoneyColumn;
 

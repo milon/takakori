@@ -3,7 +3,6 @@
 namespace Database\Factories;
 
 use App\Enums\BillingFrequency;
-use App\Enums\BillReminderFrequency;
 use App\Models\BillReminder;
 use Illuminate\Database\Eloquent\Factories\Factory;
 
