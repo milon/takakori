@@ -55,8 +55,8 @@ class GoalResource extends Resource
     {
         return [
             'index' => Pages\ListGoals::route('/'),
-            'create' => Pages\CreateGoal::route('/create'),
-            'edit' => Pages\EditGoal::route('/{record}/edit'),
+            // 'create' => Pages\CreateGoal::route('/create'),
+            // 'edit' => Pages\EditGoal::route('/{record}/edit'),
         ];
     }
 }

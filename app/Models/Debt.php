@@ -2,6 +2,7 @@
 
 namespace App\Models;
 
+use App\Enums\DebtType;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
@@ -38,6 +39,7 @@ class Debt extends Model
         'interest_rate' => 'float',
         'due_date' => 'date',
         'currency_id' => 'integer',
+        'type' => DebtType::class,
     ];
 
     public function user(): BelongsTo
