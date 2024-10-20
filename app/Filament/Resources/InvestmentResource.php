@@ -4,7 +4,6 @@ namespace App\Filament\Resources;
 
 use App\Enums\InvestmentType;
 use App\Filament\Resources\InvestmentResource\Pages;
-use App\Filament\Resources\InvestmentResource\RelationManagers;
 use App\Models\Investment;
 use Filament\Forms;
 use Filament\Forms\Form;
@@ -12,8 +11,6 @@ use Filament\Resources\Resource;
 use Filament\Tables;
 use Filament\Tables\Filters\SelectFilter;
 use Filament\Tables\Table;
-use Illuminate\Database\Eloquent\Builder;
-use Illuminate\Database\Eloquent\SoftDeletingScope;
 use Pelmered\FilamentMoneyField\Forms\Components\MoneyInput;
 use Pelmered\FilamentMoneyField\Tables\Columns\MoneyColumn;
 
