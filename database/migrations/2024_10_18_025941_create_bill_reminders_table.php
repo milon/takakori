@@ -11,15 +11,16 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('transactions', function (Blueprint $table) {
+        Schema::create('bill_reminders', function (Blueprint $table) {
             $table->id();
             $table->foreignId('user_id');
-            $table->foreignId('account_id');
             $table->foreignId('category_id');
-            $table->string('transaction_type');
+            $table->foreignId('currency_id');
+            $table->string('name');
             $table->integer('amount');
-            $table->dateTime('date');
-            $table->text('description');
+            $table->date('due_date');
+            $table->string('frequency');
+            $table->boolean('is_paid');
             $table->timestamps();
         });
     }
@@ -29,6 +30,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('transactions');
+        Schema::dropIfExists('bill_reminders');
     }
 };

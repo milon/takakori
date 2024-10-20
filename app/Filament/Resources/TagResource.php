@@ -17,7 +17,9 @@ class TagResource extends Resource
 {
     protected static ?string $model = Tag::class;
 
-    protected static ?string $navigationGroup = 'Accounts';
+    protected static ?string $navigationIcon = 'fas-tags';
+
+    protected static ?string $navigationGroup = 'Meta';
 
     public static function form(Form $form): Form
     {
@@ -76,10 +78,5 @@ class TagResource extends Resource
             'create' => Pages\CreateTag::route('/create'),
             'edit' => Pages\EditTag::route('/{record}/edit'),
         ];
-    }
-
-    public static function canViewAny(): bool
-    {
-        return true;
     }
 }

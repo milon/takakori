@@ -24,6 +24,8 @@ class UserResource extends Resource
 {
     protected static ?string $model = User::class;
 
+    protected static ?string $navigationIcon = 'fas-user-group';
+
     protected static ?string $navigationGroup = 'Settings';
 
     public static function form(Form $form): Form
@@ -36,16 +38,16 @@ class UserResource extends Resource
                     ->email()
                     ->required(),
                 Forms\Components\TextInput::make('password')
-                    ->password()
+                ->password()
                     ->required()
                     ->hiddenOn('edit'),
                 Forms\Components\ToggleButtons::make('is_admin')
-                    ->boolean()
+                ->boolean()
                     ->inline()
                     ->default(false)
                     ->required(),
                 Forms\Components\FileUpload::make('avatar_url')
-                    ->label('Avatar')
+                ->label('Avatar')
                     ->avatar(),
             ]);
     }
@@ -55,7 +57,7 @@ class UserResource extends Resource
         return $table
             ->columns([
                 Tables\Columns\ImageColumn::make('avatar_url')
-                    ->label('Avatar')
+                ->label('Avatar')
                     ->circular()
                     ->defaultImageUrl(fn($record) => get_default_avatar($record->name)),
                 Tables\Columns\TextColumn::make('name')
@@ -63,21 +65,21 @@ class UserResource extends Resource
                 Tables\Columns\TextColumn::make('email')
                     ->searchable(),
                 Tables\Columns\IconColumn::make('is_admin')
-                    ->boolean(),
+                ->boolean(),
                 Tables\Columns\TextColumn::make('created_at')
-                    ->dateTime()
+                ->dateTime()
                     ->sortable()
                     ->toggleable(isToggledHiddenByDefault: true),
                 Tables\Columns\TextColumn::make('updated_at')
-                    ->dateTime()
+                ->dateTime()
                     ->sortable()
                     ->toggleable(isToggledHiddenByDefault: true),
             ])
             ->filters([
                 Filter::make('is_admin')
-                    ->label('Show only admin users')
-                    ->query(fn(Builder $query): Builder => $query->where('is_admin', true))
-                    ->toggle(),
+                ->label('Show only admin users')
+                ->query(fn(Builder $query): Builder => $query->where('is_admin', true))
+                ->toggle(),
             ])
             ->actions([
                 Tables\Actions\EditAction::make()
@@ -95,11 +97,11 @@ class UserResource extends Resource
     {
         return $infolist->schema([
             Section::make('Personal Information')
-                ->columns(3)
+            ->columns(3)
                 ->schema([
                     ImageEntry::make('avatar_url')
-                        ->label('Avatar')
-                        ->defaultImageUrl(fn($record) => get_default_avatar($record->name))
+                    ->label('Avatar')
+                    ->defaultImageUrl(fn($record) => get_default_avatar($record->name))
                         ->circular(),
                     Group::make()
                         ->columnSpan(2)
@@ -125,7 +127,7 @@ class UserResource extends Resource
         return [
             'index' => Pages\ListUsers::route('/'),
             'create' => Pages\CreateUser::route('/create'),
-            'view' => Pages\ViewUser::route('/{record}')
+            'view' => Pages\ViewUser::route('/{record}'),
         ];
     }
 

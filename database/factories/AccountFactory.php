@@ -4,6 +4,7 @@ namespace Database\Factories;
 
 use Illuminate\Database\Eloquent\Factories\Factory;
 use Illuminate\Support\Str;
+use App\Models\;
 use App\Models\Account;
 use App\Models\User;
 
@@ -23,9 +24,11 @@ class AccountFactory extends Factory
     {
         return [
             'user_id' => User::factory(),
-            'account_name' => $this->faker->word(),
-            'account_type' => $this->faker->word(),
+            'currency_id' => ::factory(),
+            'name' => $this->faker->name(),
+            'type' => $this->faker->word(),
             'balance' => $this->faker->numberBetween(-10000, 10000),
+            'currency' => $this->faker->word(),
         ];
     }
 }

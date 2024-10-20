@@ -63,13 +63,6 @@ models:
     relationships:
       belongsTo: User, Account, Category, Currency
 
-  User:
-    name: string
-    email: string
-    password: string
-    relationships:
-      hasMany: Account, Category, Transaction, Budget, Goal, RecurringTransaction
-
   Tag:
     user_id: unsigned integer
     name: string

@@ -5,7 +5,7 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
-use Illuminate\Database\Eloquent\Relations\BelongsToMany;
+use Illuminate\Database\Eloquent\Relations\HasMany;
 
 class Transaction extends Model
 {
@@ -20,6 +20,7 @@ class Transaction extends Model
         'user_id',
         'account_id',
         'category_id',
+        'currency_id',
         'transaction_type',
         'amount',
         'date',
@@ -36,6 +37,7 @@ class Transaction extends Model
         'user_id' => 'integer',
         'account_id' => 'integer',
         'category_id' => 'integer',
+        'currency_id' => 'integer',
         'date' => 'datetime',
     ];
 
@@ -54,8 +56,13 @@ class Transaction extends Model
         return $this->belongsTo(Category::class);
     }
 
-    public function tags(): BelongsToMany
+    public function currency(): BelongsTo
     {
-        return $this->belongsToMany(Tag::class);
+        return $this->belongsTo(Currency::class);
+    }
+
+    public function tags(): HasMany
+    {
+        return $this->hasMany(Tag::class);
     }
 }

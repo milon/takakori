@@ -17,6 +17,8 @@ class TransactionResource extends Resource
 {
     protected static ?string $model = Transaction::class;
 
+    protected static ?string $navigationIcon = 'fas-file-invoice-dollar';
+
     protected static ?string $navigationGroup = 'Accounts';
 
     public static function form(Form $form): Form
@@ -102,10 +104,5 @@ class TransactionResource extends Resource
             'create' => Pages\CreateTransaction::route('/create'),
             'edit' => Pages\EditTransaction::route('/{record}/edit'),
         ];
-    }
-
-    public static function canViewAny(): bool
-    {
-        return true;
     }
 }

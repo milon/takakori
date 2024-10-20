@@ -25,6 +25,7 @@ class BudgetFactory extends Factory
         return [
             'user_id' => User::factory(),
             'category_id' => ::factory(),
+            'currency_id' => ::factory(),
             'amount' => $this->faker->numberBetween(-10000, 10000),
             'start_date' => $this->faker->date(),
             'end_date' => $this->faker->date(),

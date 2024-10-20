@@ -18,6 +18,7 @@ class Budget extends Model
     protected $fillable = [
         'user_id',
         'category_id',
+        'currency_id',
         'amount',
         'start_date',
         'end_date',
@@ -32,6 +33,7 @@ class Budget extends Model
         'id' => 'integer',
         'user_id' => 'integer',
         'category_id' => 'integer',
+        'currency_id' => 'integer',
         'start_date' => 'date',
         'end_date' => 'date',
     ];
@@ -44,5 +46,10 @@ class Budget extends Model
     public function category(): BelongsTo
     {
         return $this->belongsTo(Category::class);
+    }
+
+    public function currency(): BelongsTo
+    {
+        return $this->belongsTo(Currency::class);
     }
 }

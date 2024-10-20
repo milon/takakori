@@ -11,10 +11,17 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('categories', function (Blueprint $table) {
+        Schema::create('debts', function (Blueprint $table) {
             $table->id();
             $table->foreignId('user_id');
             $table->string('name');
+            $table->string('type');
+            $table->float('interest_rate');
+            $table->integer('initial_amount');
+            $table->integer('current_balance');
+            $table->integer('min_payment');
+            $table->date('due_date');
+            $table->foreignId('currency_id');
             $table->timestamps();
         });
     }
@@ -24,6 +31,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('categories');
+        Schema::dropIfExists('debts');
     }
 };

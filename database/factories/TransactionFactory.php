@@ -26,6 +26,7 @@ class TransactionFactory extends Factory
             'user_id' => User::factory(),
             'account_id' => ::factory(),
             'category_id' => ::factory(),
+            'currency_id' => ::factory(),
             'transaction_type' => $this->faker->word(),
             'amount' => $this->faker->numberBetween(-10000, 10000),
             'date' => $this->faker->dateTime(),
