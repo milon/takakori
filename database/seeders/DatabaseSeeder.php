@@ -18,14 +18,12 @@ class DatabaseSeeder extends Seeder
         $faker = app(Generator::class);
 
         // Admin User
-        User::factory()->create([
-            'name' => 'Nuruzzaman Milon',
-            'email' => 'admin@takakori.app',
-            'password' => bcrypt('password'),
-            'is_admin' => true,
-        ]);
+        $this->call(AdminUserSeeder::class);
 
         User::factory(25)->create();
         Tag::factory(25)->create();
+
+        $this->call(CurrencySeeder::class);
+
     }
 }

@@ -2,11 +2,10 @@
 
 namespace Database\Factories;
 
-use Illuminate\Database\Eloquent\Factories\Factory;
-use Illuminate\Support\Str;
-use App\Models\;
+use App\Models\Currency;
 use App\Models\Debt;
 use App\Models\User;
+use Illuminate\Database\Eloquent\Factories\Factory;
 
 class DebtFactory extends Factory
 {
@@ -31,7 +30,7 @@ class DebtFactory extends Factory
             'current_balance' => $this->faker->numberBetween(-10000, 10000),
             'min_payment' => $this->faker->numberBetween(-10000, 10000),
             'due_date' => $this->faker->date(),
-            'currency_id' => ::factory(),
+            'currency_id' => Currency::factory(),
         ];
     }
 }

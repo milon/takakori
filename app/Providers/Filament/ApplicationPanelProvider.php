@@ -2,16 +2,13 @@
 
 namespace App\Providers\Filament;
 
-use App\Filament\Pages\Auth\Register;
 use Filament\Http\Middleware\Authenticate;
 use Filament\Http\Middleware\DisableBladeIconComponents;
 use Filament\Http\Middleware\DispatchServingFilamentEvent;
-use Filament\Models\Contracts\HasAvatar;
 use Filament\Navigation\NavigationGroup;
 use Filament\Panel;
 use Filament\PanelProvider;
 use Filament\Support\Colors\Color;
-use Filament\Widgets;
 use Illuminate\Cookie\Middleware\AddQueuedCookiesToResponse;
 use Illuminate\Cookie\Middleware\EncryptCookies;
 use Illuminate\Foundation\Http\Middleware\VerifyCsrfToken;
@@ -29,8 +26,8 @@ class ApplicationPanelProvider extends PanelProvider
             ->default()
             ->id('app')
             ->path('/')
-            ->brandLogo(fn() => view('filament.logo.light'))
-            ->darkModeBrandLogo(fn() => view('filament.logo.dark'))
+            ->brandLogo(fn () => view('filament.logo.light'))
+            ->darkModeBrandLogo(fn () => view('filament.logo.dark'))
             ->brandLogoHeight('3rem')
             ->spa()
             ->login()
@@ -66,13 +63,13 @@ class ApplicationPanelProvider extends PanelProvider
             ])
             ->plugins([
                 BreezyCore::make()
-                ->myProfile(hasAvatars: true)
-                ->avatarUploadComponent(
-                    fn($fileUpload) => $fileUpload
-                        ->avatar()
-                        ->disableLabel()
-                        ->circleCropper()
-                    )
+                    ->myProfile(hasAvatars: true)
+                    ->avatarUploadComponent(
+                        fn ($fileUpload) => $fileUpload
+                            ->avatar()
+                            ->disableLabel()
+                            ->circleCropper()
+                    ),
             ]);
     }
 }

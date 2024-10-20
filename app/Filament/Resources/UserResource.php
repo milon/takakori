@@ -3,7 +3,6 @@
 namespace App\Filament\Resources;
 
 use App\Filament\Resources\UserResource\Pages;
-use App\Filament\Resources\UserResource\RelationManagers;
 use App\Models\User;
 use Filament\Forms;
 use Filament\Forms\Form;
@@ -17,7 +16,6 @@ use Filament\Tables;
 use Filament\Tables\Filters\Filter;
 use Filament\Tables\Table;
 use Illuminate\Database\Eloquent\Builder;
-use Illuminate\Database\Eloquent\SoftDeletingScope;
 use Illuminate\Support\Facades\Auth;
 
 class UserResource extends Resource
@@ -38,16 +36,16 @@ class UserResource extends Resource
                     ->email()
                     ->required(),
                 Forms\Components\TextInput::make('password')
-                ->password()
+                    ->password()
                     ->required()
                     ->hiddenOn('edit'),
                 Forms\Components\ToggleButtons::make('is_admin')
-                ->boolean()
+                    ->boolean()
                     ->inline()
                     ->default(false)
                     ->required(),
                 Forms\Components\FileUpload::make('avatar_url')
-                ->label('Avatar')
+                    ->label('Avatar')
                     ->avatar(),
             ]);
     }
@@ -57,29 +55,29 @@ class UserResource extends Resource
         return $table
             ->columns([
                 Tables\Columns\ImageColumn::make('avatar_url')
-                ->label('Avatar')
+                    ->label('Avatar')
                     ->circular()
-                    ->defaultImageUrl(fn($record) => get_default_avatar($record->name)),
+                    ->defaultImageUrl(fn ($record) => get_default_avatar($record->name)),
                 Tables\Columns\TextColumn::make('name')
                     ->searchable(),
                 Tables\Columns\TextColumn::make('email')
                     ->searchable(),
                 Tables\Columns\IconColumn::make('is_admin')
-                ->boolean(),
+                    ->boolean(),
                 Tables\Columns\TextColumn::make('created_at')
-                ->dateTime()
+                    ->dateTime()
                     ->sortable()
                     ->toggleable(isToggledHiddenByDefault: true),
                 Tables\Columns\TextColumn::make('updated_at')
-                ->dateTime()
+                    ->dateTime()
                     ->sortable()
                     ->toggleable(isToggledHiddenByDefault: true),
             ])
             ->filters([
                 Filter::make('is_admin')
-                ->label('Show only admin users')
-                ->query(fn(Builder $query): Builder => $query->where('is_admin', true))
-                ->toggle(),
+                    ->label('Show only admin users')
+                    ->query(fn (Builder $query): Builder => $query->where('is_admin', true))
+                    ->toggle(),
             ])
             ->actions([
                 Tables\Actions\EditAction::make(),
@@ -96,11 +94,11 @@ class UserResource extends Resource
     {
         return $infolist->schema([
             Section::make('Personal Information')
-            ->columns(3)
+                ->columns(3)
                 ->schema([
                     ImageEntry::make('avatar_url')
-                    ->label('Avatar')
-                    ->defaultImageUrl(fn($record) => get_default_avatar($record->name))
+                        ->label('Avatar')
+                        ->defaultImageUrl(fn ($record) => get_default_avatar($record->name))
                         ->circular(),
                     Group::make()
                         ->columnSpan(2)

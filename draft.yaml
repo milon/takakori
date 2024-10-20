@@ -64,7 +64,6 @@ models:
       belongsTo: User, Account, Category, Currency
 
   Tag:
-    user_id: unsigned integer
     name: string
     relationships:
       belongsTo: User

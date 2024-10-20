@@ -2,11 +2,11 @@
 
 namespace Database\Factories;
 
-use Illuminate\Database\Eloquent\Factories\Factory;
-use Illuminate\Support\Str;
-use App\Models\;
 use App\Models\BillReminder;
+use App\Models\Category;
+use App\Models\Currency;
 use App\Models\User;
+use Illuminate\Database\Eloquent\Factories\Factory;
 
 class BillReminderFactory extends Factory
 {
@@ -24,8 +24,8 @@ class BillReminderFactory extends Factory
     {
         return [
             'user_id' => User::factory(),
-            'category_id' => ::factory(),
-            'currency_id' => ::factory(),
+            'category_id' => Category::factory(),
+            'currency_id' => Currency::factory(),
             'name' => $this->faker->name(),
             'amount' => $this->faker->numberBetween(-10000, 10000),
             'due_date' => $this->faker->date(),

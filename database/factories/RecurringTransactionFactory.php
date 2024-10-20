@@ -2,11 +2,12 @@
 
 namespace Database\Factories;
 
-use Illuminate\Database\Eloquent\Factories\Factory;
-use Illuminate\Support\Str;
-use App\Models\;
+use App\Models\Account;
+use App\Models\Category;
+use App\Models\Currency;
 use App\Models\RecurringTransaction;
 use App\Models\User;
+use Illuminate\Database\Eloquent\Factories\Factory;
 
 class RecurringTransactionFactory extends Factory
 {
@@ -24,9 +25,9 @@ class RecurringTransactionFactory extends Factory
     {
         return [
             'user_id' => User::factory(),
-            'account_id' => ::factory(),
-            'category_id' => ::factory(),
-            'currency_id' => ::factory(),
+            'account_id' => Account::factory(),
+            'category_id' => Category::factory(),
+            'currency_id' => Currency::factory(),
             'transaction_type' => $this->faker->word(),
             'amount' => $this->faker->numberBetween(-10000, 10000),
             'frequency' => $this->faker->word(),

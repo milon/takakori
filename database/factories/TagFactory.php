@@ -2,10 +2,8 @@
 
 namespace Database\Factories;
 
-use Illuminate\Database\Eloquent\Factories\Factory;
-use Illuminate\Support\Str;
 use App\Models\Tag;
-use App\Models\User;
+use Illuminate\Database\Eloquent\Factories\Factory;
 
 class TagFactory extends Factory
 {
@@ -22,8 +20,7 @@ class TagFactory extends Factory
     public function definition(): array
     {
         return [
-            'user_id' => rand(1, 20),
-            'name' => $this->faker->name(),
+            'name' => $this->faker->word(),
         ];
     }
 }

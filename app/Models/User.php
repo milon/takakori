@@ -11,7 +11,8 @@ use Illuminate\Support\Facades\Storage;
 
 class User extends Authenticatable implements HasAvatar
 {
-    use HasFactory, Notifiable;
+    use HasFactory;
+    use Notifiable;
 
     /**
      * The attributes that are mass assignable.
@@ -22,6 +23,7 @@ class User extends Authenticatable implements HasAvatar
         'name',
         'email',
         'password',
+        'avatar_url',
     ];
 
     /**
