@@ -2,13 +2,17 @@
 
 namespace App\Filament\Resources;
 
+use App\Enums\AccountType;
 use App\Filament\Resources\AccountResource\Pages;
 use App\Models\Account;
 use Filament\Forms;
 use Filament\Forms\Form;
 use Filament\Resources\Resource;
 use Filament\Tables;
+use Filament\Tables\Filters\SelectFilter;
 use Filament\Tables\Table;
+use Pelmered\FilamentMoneyField\Forms\Components\MoneyInput;
+use Pelmered\FilamentMoneyField\Tables\Columns\MoneyColumn;
 
 class AccountResource extends Resource
 {
@@ -25,11 +29,16 @@ class AccountResource extends Resource
                 Forms\Components\Select::make('user_id')
                     ->relationship('user', 'name')
                     ->required(),
-                Forms\Components\TextInput::make('account_name')
+                Forms\Components\Select::make('currency_id')
+                    ->relationship('currency', 'name')
                     ->required(),
-                Forms\Components\TextInput::make('account_type')
+                Forms\Components\TextInput::make('name')
                     ->required(),
-                Forms\Components\TextInput::make('balance')
+                Forms\Components\ToggleButtons::make('type')
+                    ->options(AccountType::class)
+                    ->inline()
+                    ->required(),
+                MoneyInput::make('balance')
                     ->required()
                     ->numeric(),
             ]);
@@ -42,11 +51,14 @@ class AccountResource extends Resource
                 Tables\Columns\TextColumn::make('user.name')
                     ->numeric()
                     ->sortable(),
-                Tables\Columns\TextColumn::make('account_name')
+                Tables\Columns\TextColumn::make('currency.code')
+                    ->numeric()
+                    ->sortable(),
+                Tables\Columns\TextColumn::make('name')
                     ->searchable(),
-                Tables\Columns\TextColumn::make('account_type')
-                    ->searchable(),
-                Tables\Columns\TextColumn::make('balance')
+                Tables\Columns\TextColumn::make('type')
+                    ->badge(),
+                MoneyColumn::make('balance')
                     ->numeric()
                     ->sortable(),
                 Tables\Columns\TextColumn::make('created_at')
@@ -59,10 +71,13 @@ class AccountResource extends Resource
                     ->toggleable(isToggledHiddenByDefault: true),
             ])
             ->filters([
-                //
+                SelectFilter::make('User')->relationship('user', 'name')->preload()->searchable(),
+                SelectFilter::make('type')->options(AccountType::class),
+                SelectFilter::make('Currency')->relationship('currency', 'code')->preload(),
             ])
             ->actions([
                 Tables\Actions\EditAction::make(),
+                Tables\Actions\DeleteAction::make()->requiresConfirmation(),
             ])
             ->bulkActions([
                 Tables\Actions\BulkActionGroup::make([
@@ -82,8 +97,8 @@ class AccountResource extends Resource
     {
         return [
             'index' => Pages\ListAccounts::route('/'),
-            'create' => Pages\CreateAccount::route('/create'),
-            'edit' => Pages\EditAccount::route('/{record}/edit'),
+            // 'create' => Pages\CreateAccount::route('/create'),
+            // 'edit' => Pages\EditAccount::route('/{record}/edit'),
         ];
     }
 }

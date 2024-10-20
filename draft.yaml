@@ -5,7 +5,6 @@ models:
     name: string
     type: string
     balance: integer
-    currency: string
     relationships:
       belongsTo: User, Currency
       hasMany: Transaction

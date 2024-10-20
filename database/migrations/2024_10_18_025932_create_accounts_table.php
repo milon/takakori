@@ -18,7 +18,6 @@ return new class extends Migration
             $table->string('name');
             $table->string('type');
             $table->integer('balance');
-            $table->string('currency');
             $table->timestamps();
         });
     }

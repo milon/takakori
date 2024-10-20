@@ -3,8 +3,6 @@
 namespace Database\Factories;
 
 use App\Models\Account;
-use App\Models\Currency;
-use App\Models\User;
 use Illuminate\Database\Eloquent\Factories\Factory;
 
 class AccountFactory extends Factory
@@ -22,12 +20,11 @@ class AccountFactory extends Factory
     public function definition(): array
     {
         return [
-            'user_id' => User::factory(),
-            'currency_id' => Currency::factory(),
-            'name' => $this->faker->name(),
-            'type' => $this->faker->word(),
+            'user_id' => rand(1, 20),
+            'currency_id' => rand(1, 4),
+            'name' => $this->faker->words(),
+            'type' => $this->faker->randomElement(['savings', 'checking', 'credit-card']),
             'balance' => $this->faker->numberBetween(-10000, 10000),
-            'currency' => $this->faker->word(),
         ];
     }
 }

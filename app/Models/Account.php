@@ -2,6 +2,7 @@
 
 namespace App\Models;
 
+use App\Enums\AccountType;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
@@ -22,7 +23,6 @@ class Account extends Model
         'name',
         'type',
         'balance',
-        'currency',
     ];
 
     /**
@@ -34,6 +34,7 @@ class Account extends Model
         'id' => 'integer',
         'user_id' => 'integer',
         'currency_id' => 'integer',
+        'type' => AccountType::class,
     ];
 
     public function user(): BelongsTo
