@@ -22,7 +22,7 @@ class TransactionFactory extends Factory
         return [
             'user_id' => rand(1, 20),
             'account_id' => rand(1, 20),
-            'category_id' => rand(1, 20),
+            'category_id' => rand(1, 10),
             'currency_id' => rand(1, 4),
             'amount' => $this->faker->numberBetween(-10000, 10000),
             'date' => $this->faker->dateTime(),

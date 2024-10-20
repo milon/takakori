@@ -3,12 +3,19 @@
 namespace App\Filament\Resources;
 
 use App\Filament\Resources\TransactionResource\Pages;
+use App\Filament\Resources\TransactionResource\RelationManagers;
 use App\Models\Transaction;
 use Filament\Forms;
+use Filament\Forms\Components\MarkdownEditor;
 use Filament\Forms\Form;
 use Filament\Resources\Resource;
 use Filament\Tables;
 use Filament\Tables\Table;
+use Illuminate\Database\Eloquent\Builder;
+use Illuminate\Database\Eloquent\SoftDeletingScope;
+use League\CommonMark\Input\MarkdownInput;
+use Pelmered\FilamentMoneyField\Forms\Components\MoneyInput;
+use Pelmered\FilamentMoneyField\Tables\Columns\MoneyColumn;
 
 class TransactionResource extends Resource
 {
@@ -24,22 +31,35 @@ class TransactionResource extends Resource
             ->schema([
                 Forms\Components\Select::make('user_id')
                     ->relationship('user', 'name')
+                    ->preload()
+                    ->searchable()
                     ->required(),
                 Forms\Components\Select::make('account_id')
-                    ->relationship('account', 'id')
+                    ->relationship('account', 'name')
+                    ->preload()
+                    ->searchable()
                     ->required(),
                 Forms\Components\Select::make('category_id')
                     ->relationship('category', 'name')
+                    ->preload()
+                    ->searchable()
                     ->required(),
-                Forms\Components\TextInput::make('transaction_type')
+                Forms\Components\Select::make('currency_id')
+                    ->relationship('currency', 'name')
                     ->required(),
-                Forms\Components\TextInput::make('amount')
+                MoneyInput::make('amount')
                     ->required()
                     ->numeric(),
                 Forms\Components\DateTimePicker::make('date')
+                    ->native(false)
                     ->required(),
-                Forms\Components\Textarea::make('description')
-                    ->required()
+                MarkdownEditor::make('description')
+                    ->columnSpanFull(),
+                Forms\Components\Select::make('tags')
+                    ->relationship('tags', 'name')
+                    ->preload()
+                    ->searchable()
+                    ->multiple()
                     ->columnSpanFull(),
             ]);
     }
@@ -51,15 +71,16 @@ class TransactionResource extends Resource
                 Tables\Columns\TextColumn::make('user.name')
                     ->numeric()
                     ->sortable(),
-                Tables\Columns\TextColumn::make('account.id')
+                Tables\Columns\TextColumn::make('account.name')
                     ->numeric()
                     ->sortable(),
                 Tables\Columns\TextColumn::make('category.name')
                     ->numeric()
                     ->sortable(),
-                Tables\Columns\TextColumn::make('transaction_type')
-                    ->searchable(),
-                Tables\Columns\TextColumn::make('amount')
+                Tables\Columns\TextColumn::make('currency.code')
+                    ->numeric()
+                    ->sortable(),
+                MoneyColumn::make('amount')
                     ->numeric()
                     ->sortable(),
                 Tables\Columns\TextColumn::make('date')
@@ -79,6 +100,7 @@ class TransactionResource extends Resource
             ])
             ->actions([
                 Tables\Actions\EditAction::make(),
+                Tables\Actions\DeleteAction::make()->requiresConfirmation(),
             ])
             ->bulkActions([
                 Tables\Actions\BulkActionGroup::make([
