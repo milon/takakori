@@ -22,7 +22,7 @@ class TagFactory extends Factory
     public function definition(): array
     {
         return [
-            'user_id' => User::factory(),
+            'user_id' => rand(1, 20),
             'name' => $this->faker->name(),
         ];
     }
