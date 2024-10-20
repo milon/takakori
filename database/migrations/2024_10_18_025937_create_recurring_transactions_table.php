@@ -17,7 +17,6 @@ return new class extends Migration
             $table->foreignId('account_id');
             $table->foreignId('category_id');
             $table->foreignId('currency_id');
-            $table->string('transaction_type');
             $table->integer('amount');
             $table->string('frequency');
             $table->date('start_date');

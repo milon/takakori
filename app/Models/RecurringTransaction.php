@@ -22,7 +22,6 @@ class RecurringTransaction extends Model
         'account_id',
         'category_id',
         'currency_id',
-        'transaction_type',
         'amount',
         'frequency',
         'start_date',

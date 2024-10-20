@@ -9,6 +9,7 @@ use Filament\Forms;
 use Filament\Forms\Form;
 use Filament\Resources\Resource;
 use Filament\Tables;
+use Filament\Tables\Filters\SelectFilter;
 use Filament\Tables\Table;
 use Pelmered\FilamentMoneyField\Forms\Components\MoneyInput;
 use Pelmered\FilamentMoneyField\Tables\Columns\MoneyColumn;
@@ -41,8 +42,6 @@ class RecurringTransactionResource extends Resource
                 Forms\Components\Select::make('currency_id')
                     ->relationship('currency', 'name')
                     ->required(),
-                Forms\Components\TextInput::make('transaction_type')
-                    ->required(),
                 MoneyInput::make('amount')
                     ->required()
                     ->numeric(),
@@ -68,12 +67,12 @@ class RecurringTransactionResource extends Resource
                     ->sortable(),
                 Tables\Columns\TextColumn::make('category.name')
                     ->numeric()
-                    ->sortable(),
-                Tables\Columns\TextColumn::make('transaction_type')
-                    ->searchable(),
+                    ->sortable()
+                    ->toggleable(isToggledHiddenByDefault: true),
                 Tables\Columns\TextColumn::make('currency.code')
                     ->numeric()
-                    ->sortable(),
+                    ->sortable()
+                    ->toggleable(isToggledHiddenByDefault: true),
                 MoneyColumn::make('amount')
                     ->numeric()
                     ->sortable(),
@@ -96,7 +95,9 @@ class RecurringTransactionResource extends Resource
                     ->toggleable(isToggledHiddenByDefault: true),
             ])
             ->filters([
-                //
+                SelectFilter::make('Category')->relationship('category', 'name')->preload()->searchable(),
+                SelectFilter::make('Frequency')->options(BillingFrequency::class),
+                SelectFilter::make('Currency')->relationship('currency', 'code')->preload(),
             ])
             ->actions([
                 Tables\Actions\EditAction::make(),

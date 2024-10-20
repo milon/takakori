@@ -25,7 +25,6 @@ class RecurringTransactionFactory extends Factory
             'account_id' => rand(1, 20),
             'category_id' => rand(1, 10),
             'currency_id' => rand(1, 4),
-            'transaction_type' => $this->faker->word(),
             'amount' => $this->faker->numberBetween(100, 1000),
             'frequency' => $this->faker->randomElement(array_column(BillingFrequency::cases(), 'value')),
             'start_date' => $this->faker->dateTimeBetween(now()->subYears(2), now()->addYears(3)),
