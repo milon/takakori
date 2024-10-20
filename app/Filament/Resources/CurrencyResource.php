@@ -14,7 +14,9 @@ class CurrencyResource extends Resource
 {
     protected static ?string $model = Currency::class;
 
-    protected static ?string $navigationIcon = 'heroicon-o-rectangle-stack';
+    protected static ?string $navigationIcon = 'fas-money-bill-wave';
+
+    protected static ?string $navigationGroup = 'Meta';
 
     public static function form(Form $form): Form
     {

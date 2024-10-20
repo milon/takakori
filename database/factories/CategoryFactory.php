@@ -3,7 +3,6 @@
 namespace Database\Factories;
 
 use App\Models\Category;
-use App\Models\User;
 use Illuminate\Database\Eloquent\Factories\Factory;
 
 class CategoryFactory extends Factory
@@ -21,9 +20,8 @@ class CategoryFactory extends Factory
     public function definition(): array
     {
         return [
-            'user_id' => User::factory(),
-            'name' => $this->faker->name(),
-            'type' => $this->faker->word(),
+            'name' => $this->faker->word(),
+            'type' => $this->faker->randomElement(['income', 'expense']),
         ];
     }
 }

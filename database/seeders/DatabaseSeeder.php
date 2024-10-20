@@ -2,6 +2,7 @@
 
 namespace Database\Seeders;
 
+use App\Models\Category;
 use App\Models\Tag;
 use App\Models\User;
 use Faker\Generator;
@@ -20,10 +21,11 @@ class DatabaseSeeder extends Seeder
         // Admin User
         $this->call(AdminUserSeeder::class);
 
+        $this->call(CurrencySeeder::class);
+
         User::factory(25)->create();
         Tag::factory(25)->create();
-
-        $this->call(CurrencySeeder::class);
+        Category::factory(10)->create();
 
     }
 }

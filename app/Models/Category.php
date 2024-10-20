@@ -2,6 +2,7 @@
 
 namespace App\Models;
 
+use App\Enums\CategoryType;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
@@ -16,7 +17,6 @@ class Category extends Model
      * @var array
      */
     protected $fillable = [
-        'user_id',
         'name',
         'type',
     ];
@@ -28,7 +28,7 @@ class Category extends Model
      */
     protected $casts = [
         'id' => 'integer',
-        'user_id' => 'integer',
+        'type' => CategoryType::class,
     ];
 
     public function user(): BelongsTo

@@ -11,7 +11,6 @@ models:
       hasMany: Transaction
 
   Category:
-    user_id: unsigned integer
     name: string
     type: string
     relationships:
