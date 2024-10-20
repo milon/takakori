@@ -2,9 +2,11 @@
 
 namespace App\Models;
 
+use App\Enums\BillingFrequency;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
+use Illuminate\Database\Eloquent\Relations\MorphToMany;
 
 class RecurringTransaction extends Model
 {
@@ -40,6 +42,7 @@ class RecurringTransaction extends Model
         'currency_id' => 'integer',
         'start_date' => 'date',
         'end_date' => 'date',
+        'frequency' => BillingFrequency::class,
     ];
 
     public function user(): BelongsTo
@@ -60,5 +63,10 @@ class RecurringTransaction extends Model
     public function currency(): BelongsTo
     {
         return $this->belongsTo(Currency::class);
+    }
+
+    public function tags(): MorphToMany
+    {
+        return $this->morphToMany(Tag::class, 'taggable');
     }
 }

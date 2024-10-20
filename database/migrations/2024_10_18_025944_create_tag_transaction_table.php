@@ -11,9 +11,10 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('tag_transaction', function (Blueprint $table) {
+        Schema::create('taggables', function (Blueprint $table) {
             $table->foreignId('tag_id');
-            $table->foreignId('transaction_id');
+            $table->foreignId('taggable_id');
+            $table->string('taggable_type');
         });
     }
 
@@ -22,6 +23,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('tag_transaction');
+        Schema::dropIfExists('taggables');
     }
 };

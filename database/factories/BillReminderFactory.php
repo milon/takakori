@@ -2,6 +2,7 @@
 
 namespace Database\Factories;
 
+use App\Enums\BillingFrequency;
 use App\Enums\BillReminderFrequency;
 use App\Models\BillReminder;
 use Illuminate\Database\Eloquent\Factories\Factory;
@@ -27,7 +28,7 @@ class BillReminderFactory extends Factory
             'name' => $this->faker->name(),
             'amount' => $this->faker->numberBetween(1, 10000),
             'due_date' => $this->faker->dateTimeBetween(now()->subYears(2), now()->addYears(3)),
-            'frequency' => $this->faker->randomElement(array_column(BillReminderFrequency::cases(), 'value')),
+            'frequency' => $this->faker->randomElement(array_column(BillingFrequency::cases(), 'value')),
             'is_paid' => $this->faker->boolean(),
         ];
     }

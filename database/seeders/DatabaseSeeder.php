@@ -8,7 +8,10 @@ use App\Models\Budget;
 use App\Models\Category;
 use App\Models\Debt;
 use App\Models\Goal;
+use App\Models\Investment;
+use App\Models\RecurringTransaction;
 use App\Models\Tag;
+use App\Models\Transaction;
 use App\Models\User;
 // use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use Illuminate\Database\Seeder;
@@ -22,7 +25,6 @@ class DatabaseSeeder extends Seeder
     {
         // Admin User
         $this->call(AdminUserSeeder::class);
-
         $this->call(CurrencySeeder::class);
 
         User::factory(25)->create();
@@ -33,5 +35,8 @@ class DatabaseSeeder extends Seeder
         Budget::factory(15)->create();
         Debt::factory(15)->create();
         Goal::factory(15)->create();
+        Investment::factory(15)->create();
+        Transaction::factory(150)->create();
+        RecurringTransaction::factory(150)->create();
     }
 }

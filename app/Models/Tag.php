@@ -5,6 +5,7 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsToMany;
+use Illuminate\Database\Eloquent\Relations\MorphToMany;
 
 class Tag extends Model
 {
@@ -28,8 +29,13 @@ class Tag extends Model
         'id' => 'integer',
     ];
 
-    public function transactions(): BelongsToMany
+    public function transactions(): MorphToMany
     {
-        return $this->belongsToMany(Transaction::class);
+        return $this->morphedByMany(Transaction::class, 'taggables');
+    }
+
+    public function recurringTransactions(): MorphToMany
+    {
+        return $this->morphedByMany(Transaction::class, 'taggables');
     }
 }

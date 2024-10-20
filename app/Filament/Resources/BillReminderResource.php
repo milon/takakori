@@ -2,6 +2,7 @@
 
 namespace App\Filament\Resources;
 
+use App\Enums\BillingFrequency;
 use App\Enums\BillReminderFrequency;
 use App\Filament\Resources\BillReminderResource\Pages;
 use App\Models\BillReminder;
@@ -51,7 +52,7 @@ class BillReminderResource extends Resource
                     ->native(false)
                     ->required(),
                 Forms\Components\Select::make('frequency')
-                    ->options(BillReminderFrequency::class)
+                    ->options(BillingFrequency::class)
                     ->required(),
                 Forms\Components\Toggle::make('is_paid')
                     ->required(),
@@ -93,7 +94,7 @@ class BillReminderResource extends Resource
             ])
             ->filters([
                 SelectFilter::make('Category')->relationship('category', 'name')->preload()->searchable(),
-                SelectFilter::make('Frequency')->options(BillReminderFrequency::class),
+                SelectFilter::make('Frequency')->options(BillingFrequency::class),
                 SelectFilter::make('Currency')->relationship('currency', 'code')->preload(),
                 Filter::make('is_paid')
                     ->label('Show only unpaid bills')
