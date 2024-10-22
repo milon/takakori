@@ -28,11 +28,17 @@ class AccountResource extends Resource
             ->schema([
                 Forms\Components\Select::make('user_id')
                     ->relationship('user', 'name')
+                    ->preload()
+                    ->searchable()
                     ->required(),
                 Forms\Components\Select::make('currency_id')
                     ->relationship('currency', 'name')
                     ->required(),
                 Forms\Components\TextInput::make('name')
+                    ->required(),
+                Forms\Components\TextInput::make('number')
+                    ->required(),
+                Forms\Components\TextInput::make('institute')
                     ->required(),
                 Forms\Components\ToggleButtons::make('type')
                     ->options(AccountType::class)
@@ -50,8 +56,12 @@ class AccountResource extends Resource
             ->columns([
                 Tables\Columns\TextColumn::make('user.name')
                     ->numeric()
-                    ->sortable(),
+                    ->searchable(),
                 Tables\Columns\TextColumn::make('name')
+                    ->searchable(),
+                Tables\Columns\TextColumn::make('number')
+                    ->searchable(),
+                Tables\Columns\TextColumn::make('institute')
                     ->searchable(),
                 Tables\Columns\TextColumn::make('type')
                     ->badge(),

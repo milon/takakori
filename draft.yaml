@@ -3,6 +3,8 @@ models:
     user_id: unsigned integer
     currency_id: unsigned integer
     name: string
+    number: string
+    institute: string
     type: string
     balance: integer
     relationships:
