@@ -12,7 +12,9 @@ use Filament\Tables;
 use Filament\Tables\Filters\Filter;
 use Filament\Tables\Filters\SelectFilter;
 use Filament\Tables\Table;
+use Illuminate\Contracts\Support\Htmlable;
 use Illuminate\Database\Eloquent\Builder;
+use Illuminate\Database\Eloquent\Model;
 use Pelmered\FilamentMoneyField\Forms\Components\MoneyInput;
 use Pelmered\FilamentMoneyField\Tables\Columns\MoneyColumn;
 
@@ -125,5 +127,15 @@ class BillReminderResource extends Resource
             // 'create' => Pages\CreateBillReminder::route('/create'),
             // 'edit' => Pages\EditBillReminder::route('/{record}/edit'),
         ];
+    }
+
+    public static function getGlobalSearchResultTitle(Model $record): string | Htmlable
+    {
+        return sprintf('%s - %s', $record->name, $record->frequency->value);
+    }
+
+    public static function getGloballySearchableAttributes(): array
+    {
+        return ['name', 'frequency'];
     }
 }
