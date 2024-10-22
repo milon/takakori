@@ -10,26 +10,17 @@ A self-hosted personal finance app.
 
 ## Installation
 
-Run the following commands in your terminal-
+Run the following commands in your terminal to clone the repository-
 
 ```bash
 git clone git@github.com:milon/takakori.git takakori
-cd takakori
-
-cp .env.example .env
-composer install
-
-php artisan key:generate
-php artisan migrate
-php artisan storage:link
-
-php artisan filament:clear-cached-components
 ```
 
-To import dummy data, run the following command-
+Then go to the directory and run the install command-
 
 ```bash
-php artisan db:seed
+cd takakori
+./install.sh
 ```
 
 If you are using bulk import functionality, run the queue worker from the project background using this command-
