@@ -22,7 +22,7 @@ echo "Do you want to seed your database with dummy data?"
 if read -q "choice?$1"; then
     echo
     echo "Seeding database with dummy data"
-    php artidan db:seed
+    php artisan db:seed
 else
     echo
 fi

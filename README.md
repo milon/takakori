@@ -7,6 +7,9 @@ A self-hosted personal finance app.
 - PHP 8.1+
 - Laravel v10.0+
 - Laravel Livewire v3.0+
+- Composer
+
+If you don't have php installed in your computer, download it from [php.new](https://php.new/)
 
 ## Installation
 
