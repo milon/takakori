@@ -29,6 +29,7 @@ class ApplicationPanelProvider extends PanelProvider
             ->brandLogo(fn () => view('filament.logo.light'))
             ->darkModeBrandLogo(fn () => view('filament.logo.dark'))
             ->brandLogoHeight('3rem')
+            ->favicon(asset('images/favicon.ico'))
             ->spa()
             ->login()
             ->registration()
