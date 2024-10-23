@@ -23,7 +23,7 @@ class BudgetFactory extends Factory
             'user_id' => rand(1, 20),
             'category_id' => rand(1, 10),
             'currency_id' => rand(1, 4),
-            'amount' => $this->faker->numberBetween(-10000, 10000),
+            'amount' => $this->faker->numberBetween(100, 1000),
             'start_date' => $this->faker->dateTimeBetween(now()->subYears(2), now()),
             'end_date' => $this->faker->dateTimeBetween(now()->subYears(1), now()->addYears(2)),
         ];

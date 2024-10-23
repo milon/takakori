@@ -22,7 +22,7 @@ class InvestmentFactory extends Factory
     {
         return [
             'user_id' => rand(1, 20),
-            'name' => $this->faker->name(),
+            'name' => $this->faker->words(2, true),
             'type' => $this->faker->randomElement(array_column(InvestmentType::cases(), 'value')),
             'purchase_date' => $this->faker->dateTimeBetween(now()->subYears(2), now()->addYears(3)),
             'purchase_price' => $this->faker->numberBetween(100, 1000),

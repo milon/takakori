@@ -11,6 +11,8 @@ use Filament\Resources\Resource;
 use Filament\Tables;
 use Filament\Tables\Filters\SelectFilter;
 use Filament\Tables\Table;
+use Illuminate\Contracts\Support\Htmlable;
+use Illuminate\Database\Eloquent\Model;
 use Pelmered\FilamentMoneyField\Forms\Components\MoneyInput;
 use Pelmered\FilamentMoneyField\Tables\Columns\MoneyColumn;
 
@@ -119,5 +121,15 @@ class InvestmentResource extends Resource
             // 'create' => Pages\CreateInvestment::route('/create'),
             // 'edit' => Pages\EditInvestment::route('/{record}/edit'),
         ];
+    }
+
+    public static function getGlobalSearchResultTitle(Model $record): string | Htmlable
+    {
+        return sprintf('%s - %s', $record->name, $record->type->value);
+    }
+
+    public static function getGloballySearchableAttributes(): array
+    {
+        return ['name', 'type'];
     }
 }

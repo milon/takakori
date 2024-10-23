@@ -22,7 +22,7 @@ class DebtFactory extends Factory
     {
         return [
             'user_id' => rand(1, 20),
-            'name' => $this->faker->name(),
+            'name' => $this->faker->words(2, true),
             'type' => $this->faker->randomElement(array_column(DebtType::cases(), 'value')),
             'interest_rate' => $this->faker->randomFloat(0, 0, 10),
             'initial_amount' => $this->faker->numberBetween(-10000, 10000),
