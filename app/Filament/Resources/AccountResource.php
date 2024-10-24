@@ -7,6 +7,9 @@ use App\Filament\Resources\AccountResource\Pages;
 use App\Models\Account;
 use Filament\Forms;
 use Filament\Forms\Form;
+use Filament\Infolists\Components\Section;
+use Filament\Infolists\Components\TextEntry;
+use Filament\Infolists\Infolist;
 use Filament\Resources\Resource;
 use Filament\Tables;
 use Filament\Tables\Filters\SelectFilter;
@@ -14,6 +17,7 @@ use Filament\Tables\Table;
 use Illuminate\Contracts\Support\Htmlable;
 use Illuminate\Database\Eloquent\Model;
 use Pelmered\FilamentMoneyField\Forms\Components\MoneyInput;
+use Pelmered\FilamentMoneyField\Infolists\Components\MoneyEntry;
 use Pelmered\FilamentMoneyField\Tables\Columns\MoneyColumn;
 
 class AccountResource extends Resource
@@ -88,13 +92,33 @@ class AccountResource extends Resource
             ])
             ->actions([
                 Tables\Actions\EditAction::make(),
-                Tables\Actions\DeleteAction::make()->requiresConfirmation(),
+                Tables\Actions\ViewAction::make(),
             ])
             ->bulkActions([
                 Tables\Actions\BulkActionGroup::make([
                     Tables\Actions\DeleteBulkAction::make(),
                 ]),
             ]);
+    }
+
+    public static function infolist(Infolist $infolist): Infolist
+    {
+        return $infolist->schema([
+            Section::make('Account Details')
+                ->columns(2)
+                ->schema([
+                    TextEntry::make('user.name')->label('User'),
+                    TextEntry::make('user.email')->label('Email'),
+                    TextEntry::make('currency.code')->label('Currency code'),
+                    TextEntry::make('currency.name')->label('Currency name'),
+                    TextEntry::make('name')->label('Account name'),
+                    TextEntry::make('number')->label('Account number'),
+                    TextEntry::make('institute')->label('Bank/Financial institute'),
+                    TextEntry::make('type')->label('Account type')->badge(),
+                    MoneyEntry::make('balance'),
+                    TextEntry::make('created_at')->since(),
+                ]),
+        ]);
     }
 
     public static function getRelations(): array
@@ -108,6 +132,7 @@ class AccountResource extends Resource
     {
         return [
             'index' => Pages\ListAccounts::route('/'),
+            'view' => Pages\ViewAccount::route('/{record}'),
             // 'create' => Pages\CreateAccount::route('/create'),
             // 'edit' => Pages\EditAccount::route('/{record}/edit'),
         ];
