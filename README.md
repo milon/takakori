@@ -40,35 +40,40 @@ php artisan queue:listen
 
 ## Docker
 
-Alternatively you can run this app with docker. Make sure you have docker and docker-compose installed in your computer. To install the docker dependency run the following command-
+Alternatively you can run this app with docker. Make sure you have docker and docker-compose installed in your computer. We used a tool called [Laravel Sail](https://laravel.com/docs/11.x/sail), which is a wrapper around `docker-compose`. To install the docker dependency run the following command-
 
 ```bash
 php artisan sail:install
 ```
 
-Then run the following command to up docker containers with `docker-compose`-
+> As we would use the `sail` command a lot, it makes sense to have an alias setup for it-
+>```bash
+>alias sail='sh $([ -f sail ] && echo sail || echo vendor/bin/sail)'
+>```
+
+Then run the following command to spin up docker containers-
 
 ```bash
-docker-compose up
+./vendor/bin/sail up
 
 # or run it in detached mode
-docker-compose up -d
+./vendor/bin/sail up -d
 ```
 
 And to start or stop the containers, run this-
 
 ```bash
 # start
-docker-compose start
+./vendor/bin/sail start
 
 # stop
-docker-compose stop
+./vendor/bin/sail stop
 ```
 
 To remove the containers, run the following command-
 
 ```bash
-docker-compose down
+./vendor/bin/sail down
 ```
 
 Then visit http://localhost to visit the site.
