@@ -64,7 +64,7 @@ class TransactionImporter extends Importer
         //     'email' => $this->data['email'],
         // ]);
 
-        return new Transaction();
+        return new Transaction;
     }
 
     public static function getCompletedNotificationBody(Import $import): string

@@ -6,7 +6,6 @@ use App\Models\Account;
 use App\Models\Debt;
 use Filament\Widgets\StatsOverviewWidget as BaseWidget;
 use Filament\Widgets\StatsOverviewWidget\Stat;
-use Flowframe\Trend\Trend;
 
 class AccountOverview extends BaseWidget
 {

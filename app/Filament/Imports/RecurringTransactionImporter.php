@@ -69,7 +69,7 @@ class RecurringTransactionImporter extends Importer
         //     'email' => $this->data['email'],
         // ]);
 
-        return new RecurringTransaction();
+        return new RecurringTransaction;
     }
 
     public static function getCompletedNotificationBody(Import $import): string
