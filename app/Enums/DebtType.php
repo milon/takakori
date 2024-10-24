@@ -2,10 +2,11 @@
 
 namespace App\Enums;
 
+use Filament\Support\Contracts\HasColor;
 use Filament\Support\Contracts\HasIcon;
 use Filament\Support\Contracts\HasLabel;
 
-enum DebtType: string implements HasIcon, HasLabel
+enum DebtType: string implements HasIcon, HasLabel, HasColor
 {
     case PersonalLoan = 'personal-loan';
     case Mortgage = 'mortgage';
@@ -20,7 +21,7 @@ enum DebtType: string implements HasIcon, HasLabel
             self::Mortgage => 'Mortgage',
             self::CreditCard => 'Credit Card',
             self::AutoLoan => 'Auto Loan',
-            self::Other => 'other',
+            self::Other => 'Other',
         };
     }
 
@@ -32,6 +33,17 @@ enum DebtType: string implements HasIcon, HasLabel
             self::CreditCard => 'fas-credit-card',
             self::AutoLoan => 'fas-car-rear',
             self::Other => 'fas-money-check-dollar',
+        };
+    }
+
+    public function getColor(): string | array | null
+    {
+        return match ($this) {
+            self::PersonalLoan => '#eb4034',
+            self::Mortgage => '#76c720',
+            self::CreditCard => '#20c7bf',
+            self::AutoLoan => '#7920c7',
+            self::Other => '#c7206e',
         };
     }
 }
