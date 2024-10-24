@@ -2,20 +2,17 @@
 
 namespace App\Filament\Widgets;
 
-use App\Models\Debt;
+use App\Models\Investment;
 use Filament\Widgets\ChartWidget;
-use Flowframe\Trend\Trend;
 
-class DebtTypeChart extends ChartWidget
+class InvestmentTypeChart extends ChartWidget
 {
-    protected static ?string $heading = 'Debt by type';
-
-    // protected static string $color = 'info';
+    protected static ?string $heading = 'Chart';
 
     protected function getData(): array
     {
-        $data = Debt::query()
-            ->selectRaw('sum(current_balance) as balance, type')
+        $data = Investment::query()
+            ->selectRaw('sum(current_price) as price, type')
             ->groupBy('type')
             ->get();
 
@@ -23,7 +20,7 @@ class DebtTypeChart extends ChartWidget
             'datasets' => [
                 [
                     'label' => 'Debt by type',
-                    'data' => $data->map(fn($data) => abs($data->balance))->all(),
+                    'data' => $data->map(fn($data) => $data->price)->all(),
                     'backgroundColor' => $data->map(fn($data) => $data->type->getColor())->all()
                 ],
             ],
@@ -33,6 +30,6 @@ class DebtTypeChart extends ChartWidget
 
     protected function getType(): string
     {
-        return 'polarArea';
+        return 'pie';
     }
 }

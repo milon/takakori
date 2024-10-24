@@ -2,9 +2,10 @@
 
 namespace App\Enums;
 
+use Filament\Support\Contracts\HasColor;
 use Filament\Support\Contracts\HasLabel;
 
-enum InvestmentType: string implements HasLabel
+enum InvestmentType: string implements HasLabel, HasColor
 {
     case Stocks = 'stocks';
     case Bonds = 'bonds';
@@ -20,6 +21,17 @@ enum InvestmentType: string implements HasLabel
             self::MitualFunds => 'Mitual Funds',
             self::RealEstate => 'Real Estate',
             self::Crypto => 'Crypto',
+        };
+    }
+
+    public function getColor(): string | array | null
+    {
+        return match ($this) {
+            self::Stocks => '#eb4034',
+            self::Bonds => '#76c720',
+            self::MitualFunds => '#20c7bf',
+            self::RealEstate => '#7920c7',
+            self::Crypto => '#c7206e',
         };
     }
 }

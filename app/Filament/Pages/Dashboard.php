@@ -5,6 +5,7 @@ namespace App\Filament\Pages;
 use App\Filament\Widgets\AccountBalanceChart;
 use App\Filament\Widgets\AccountOverview;
 use App\Filament\Widgets\DebtTypeChart;
+use App\Filament\Widgets\InvestmentTypeChart;
 use Filament\Pages\Page;
 use Filament\Widgets\AccountWidget;
 use Filament\Widgets\FilamentInfoWidget;
@@ -21,6 +22,7 @@ class Dashboard extends Page
             AccountOverview::class,
             AccountBalanceChart::class,
             DebtTypeChart::class,
+            InvestmentTypeChart::class,
         ];
     }
 
