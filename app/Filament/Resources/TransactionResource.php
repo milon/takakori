@@ -2,6 +2,7 @@
 
 namespace App\Filament\Resources;
 
+use App\Enums\CategoryType;
 use App\Filament\Resources\TransactionResource\Pages;
 use App\Models\Transaction;
 use Filament\Forms;
@@ -11,6 +12,7 @@ use Filament\Resources\Resource;
 use Filament\Tables;
 use Filament\Tables\Filters\SelectFilter;
 use Filament\Tables\Table;
+use Illuminate\Database\Eloquent\Model;
 use Pelmered\FilamentMoneyField\Forms\Components\MoneyInput;
 use Pelmered\FilamentMoneyField\Tables\Columns\MoneyColumn;
 
@@ -100,7 +102,15 @@ class TransactionResource extends Resource
                 SelectFilter::make('Currency')->relationship('currency', 'code')->preload(),
             ])
             ->actions([
-                Tables\Actions\EditAction::make(),
+                Tables\Actions\EditAction::make()->after(function(Model $record, array $data) {
+                    $account = $record->account;
+                    $categoryType = $record->category->type;
+
+                    ($categoryType === CategoryType::Income) ?
+                        $account->increment('balance', $data['amount']) :
+                        $account->decrement('balance', $data['amount']);
+                    $account->save();
+                }),
                 Tables\Actions\DeleteAction::make()->requiresConfirmation(),
             ])
             ->bulkActions([
