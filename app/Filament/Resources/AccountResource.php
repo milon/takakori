@@ -4,6 +4,7 @@ namespace App\Filament\Resources;
 
 use App\Enums\AccountType;
 use App\Filament\Resources\AccountResource\Pages;
+use App\Filament\Resources\AccountResource\RelationManagers\TransactionsRelationManager;
 use App\Models\Account;
 use Filament\Forms;
 use Filament\Forms\Form;
@@ -124,7 +125,7 @@ class AccountResource extends Resource
     public static function getRelations(): array
     {
         return [
-            //
+            TransactionsRelationManager::class,
         ];
     }
 

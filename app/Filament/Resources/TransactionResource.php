@@ -3,6 +3,7 @@
 namespace App\Filament\Resources;
 
 use App\Enums\CategoryType;
+use App\Filament\Resources\TransactionResource\Forms\TransactionForm;
 use App\Filament\Resources\TransactionResource\Pages;
 use App\Models\Transaction;
 use Filament\Forms;
@@ -27,40 +28,7 @@ class TransactionResource extends Resource
     public static function form(Form $form): Form
     {
         return $form
-            ->schema([
-                Forms\Components\Select::make('user_id')
-                    ->relationship('user', 'name')
-                    ->preload()
-                    ->searchable()
-                    ->required(),
-                Forms\Components\Select::make('account_id')
-                    ->relationship('account', 'name')
-                    ->preload()
-                    ->searchable()
-                    ->required(),
-                Forms\Components\Select::make('category_id')
-                    ->relationship('category', 'name')
-                    ->preload()
-                    ->searchable()
-                    ->required(),
-                Forms\Components\Select::make('currency_id')
-                    ->relationship('currency', 'name')
-                    ->required(),
-                MoneyInput::make('amount')
-                    ->required()
-                    ->numeric(),
-                Forms\Components\DateTimePicker::make('date')
-                    ->native(false)
-                    ->required(),
-                MarkdownEditor::make('description')
-                    ->columnSpanFull(),
-                Forms\Components\Select::make('tags')
-                    ->relationship('tags', 'name')
-                    ->preload()
-                    ->searchable()
-                    ->multiple()
-                    ->columnSpanFull(),
-            ]);
+            ->schema(TransactionForm::getFrom());
     }
 
     public static function table(Table $table): Table
