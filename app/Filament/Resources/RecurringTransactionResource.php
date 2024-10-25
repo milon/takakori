@@ -3,15 +3,14 @@
 namespace App\Filament\Resources;
 
 use App\Enums\BillingFrequency;
+use App\Filament\Resources\RecurringTransactionResource\Forms\RecurringTransactionForm;
 use App\Filament\Resources\RecurringTransactionResource\Pages;
 use App\Models\RecurringTransaction;
-use Filament\Forms;
 use Filament\Forms\Form;
 use Filament\Resources\Resource;
 use Filament\Tables;
 use Filament\Tables\Filters\SelectFilter;
 use Filament\Tables\Table;
-use Pelmered\FilamentMoneyField\Forms\Components\MoneyInput;
 use Pelmered\FilamentMoneyField\Tables\Columns\MoneyColumn;
 
 class RecurringTransactionResource extends Resource
@@ -25,33 +24,7 @@ class RecurringTransactionResource extends Resource
     public static function form(Form $form): Form
     {
         return $form
-            ->schema([
-                Forms\Components\Select::make('user_id')
-                    ->relationship('user', 'name')
-                    ->searchable()
-                    ->preload()
-                    ->required(),
-                Forms\Components\Select::make('account_id')
-                    ->relationship('account', 'name')
-                    ->searchable()
-                    ->preload()
-                    ->required(),
-                Forms\Components\Select::make('category_id')
-                    ->relationship('category', 'name')
-                    ->required(),
-                Forms\Components\Select::make('currency_id')
-                    ->relationship('currency', 'name')
-                    ->required(),
-                MoneyInput::make('amount')
-                    ->required()
-                    ->numeric(),
-                Forms\Components\Select::make('frequency')
-                    ->options(BillingFrequency::class)
-                    ->required(),
-                Forms\Components\DatePicker::make('start_date')
-                    ->required(),
-                Forms\Components\DatePicker::make('end_date'),
-            ]);
+            ->schema(RecurringTransactionForm::getFrom());
     }
 
     public static function table(Table $table): Table

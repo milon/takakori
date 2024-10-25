@@ -2,20 +2,20 @@
 
 namespace App\Filament\Resources\AccountResource\RelationManagers;
 
-use App\Filament\Resources\TransactionResource\Forms\TransactionForm;
+use App\Filament\Resources\RecurringTransactionResource\Forms\RecurringTransactionForm;
 use Filament\Forms\Form;
 use Filament\Resources\RelationManagers\RelationManager;
 use Filament\Tables;
 use Filament\Tables\Table;
 
-class TransactionsRelationManager extends RelationManager
+class RecurringTransactionsRelationManager extends RelationManager
 {
-    protected static string $relationship = 'transactions';
+    protected static string $relationship = 'recurringTransactions';
 
     public function form(Form $form): Form
     {
         return $form
-            ->schema(TransactionForm::getFrom());
+            ->schema(RecurringTransactionForm::getFrom());
     }
 
     public function table(Table $table): Table
@@ -26,7 +26,8 @@ class TransactionsRelationManager extends RelationManager
                 Tables\Columns\TextColumn::make('category.name'),
                 Tables\Columns\TextColumn::make('currency.code'),
                 Tables\Columns\TextColumn::make('amount'),
-                Tables\Columns\TextColumn::make('date')->since(),
+                Tables\Columns\TextColumn::make('frequency')->badge(),
+                Tables\Columns\TextColumn::make('start_date')->since(),
             ])
             ->filters([
                 //

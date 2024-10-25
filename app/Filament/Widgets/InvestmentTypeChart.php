@@ -20,11 +20,11 @@ class InvestmentTypeChart extends ChartWidget
             'datasets' => [
                 [
                     'label' => 'Debt by type',
-                    'data' => $data->map(fn($data) => $data->price)->all(),
-                    'backgroundColor' => $data->map(fn($data) => $data->type->getColor())->all()
+                    'data' => $data->map(fn ($data) => $data->price)->all(),
+                    'backgroundColor' => $data->map(fn ($data) => $data->type->getColor())->all(),
                 ],
             ],
-            'labels' => $data->map(fn($data) => $data->type->getLabel())->all(),
+            'labels' => $data->map(fn ($data) => $data->type->getLabel())->all(),
         ];
     }
 

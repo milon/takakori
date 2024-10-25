@@ -40,18 +40,18 @@ class AccountBalanceChart extends ChartWidget
             'datasets' => [
                 [
                     'label' => 'Account Balance',
-                    'data' => $accountBalance->map(fn(TrendValue $value) => $value->aggregate),
+                    'data' => $accountBalance->map(fn (TrendValue $value) => $value->aggregate),
                     'backgroundColor' => '#09ed0d',
-                    'borderColor' => '#0d4f0e'
+                    'borderColor' => '#0d4f0e',
                 ],
                 [
                     'label' => 'Debt Balance',
-                    'data' => $debtBalance->map(fn(TrendValue $value) => $value->aggregate),
+                    'data' => $debtBalance->map(fn (TrendValue $value) => $value->aggregate),
                     'backgroundColor' => '#fa594d',
-                    'borderColor' => '#c2160a'
+                    'borderColor' => '#c2160a',
                 ],
             ],
-            'labels' => $accountBalance->map(fn(TrendValue $value) => Carbon::createFromFormat('Y-m', $value->date)->format('M, Y')),
+            'labels' => $accountBalance->map(fn (TrendValue $value) => Carbon::createFromFormat('Y-m', $value->date)->format('M, Y')),
         ];
     }
 

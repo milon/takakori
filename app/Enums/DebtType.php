@@ -6,7 +6,7 @@ use Filament\Support\Contracts\HasColor;
 use Filament\Support\Contracts\HasIcon;
 use Filament\Support\Contracts\HasLabel;
 
-enum DebtType: string implements HasIcon, HasLabel, HasColor
+enum DebtType: string implements HasColor, HasIcon, HasLabel
 {
     case PersonalLoan = 'personal-loan';
     case Mortgage = 'mortgage';

@@ -4,7 +4,6 @@ namespace App\Filament\Widgets;
 
 use App\Models\Debt;
 use Filament\Widgets\ChartWidget;
-use Flowframe\Trend\Trend;
 
 class DebtTypeChart extends ChartWidget
 {
@@ -23,11 +22,11 @@ class DebtTypeChart extends ChartWidget
             'datasets' => [
                 [
                     'label' => 'Debt by type',
-                    'data' => $data->map(fn($data) => abs($data->balance))->all(),
-                    'backgroundColor' => $data->map(fn($data) => $data->type->getColor())->all()
+                    'data' => $data->map(fn ($data) => abs($data->balance))->all(),
+                    'backgroundColor' => $data->map(fn ($data) => $data->type->getColor())->all(),
                 ],
             ],
-            'labels' => $data->map(fn($data) => $data->type->getLabel())->all(),
+            'labels' => $data->map(fn ($data) => $data->type->getLabel())->all(),
         ];
     }
 

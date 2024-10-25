@@ -53,4 +53,9 @@ class Account extends Model
     {
         return $this->hasMany(Transaction::class);
     }
+
+    public function recurringTransactions(): HasMany
+    {
+        return $this->hasMany(RecurringTransaction::class);
+    }
 }

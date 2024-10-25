@@ -4,6 +4,7 @@ namespace App\Filament\Resources;
 
 use App\Enums\AccountType;
 use App\Filament\Resources\AccountResource\Pages;
+use App\Filament\Resources\AccountResource\RelationManagers\RecurringTransactionsRelationManager;
 use App\Filament\Resources\AccountResource\RelationManagers\TransactionsRelationManager;
 use App\Models\Account;
 use Filament\Forms;
@@ -126,6 +127,7 @@ class AccountResource extends Resource
     {
         return [
             TransactionsRelationManager::class,
+            RecurringTransactionsRelationManager::class,
         ];
     }
 

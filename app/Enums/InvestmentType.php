@@ -5,7 +5,7 @@ namespace App\Enums;
 use Filament\Support\Contracts\HasColor;
 use Filament\Support\Contracts\HasLabel;
 
-enum InvestmentType: string implements HasLabel, HasColor
+enum InvestmentType: string implements HasColor, HasLabel
 {
     case Stocks = 'stocks';
     case Bonds = 'bonds';
