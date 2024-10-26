@@ -2,10 +2,9 @@
 
 namespace App\Filament\Resources;
 
-use App\Enums\InvestmentType;
+use App\Filament\Resources\InvestmentResource\Forms\InvestmentForm;
 use App\Filament\Resources\InvestmentResource\Pages;
 use App\Models\Investment;
-use Filament\Forms;
 use Filament\Forms\Form;
 use Filament\Resources\Resource;
 use Filament\Tables;
@@ -13,7 +12,6 @@ use Filament\Tables\Filters\SelectFilter;
 use Filament\Tables\Table;
 use Illuminate\Contracts\Support\Htmlable;
 use Illuminate\Database\Eloquent\Model;
-use Pelmered\FilamentMoneyField\Forms\Components\MoneyInput;
 use Pelmered\FilamentMoneyField\Tables\Columns\MoneyColumn;
 
 class InvestmentResource extends Resource
@@ -27,33 +25,7 @@ class InvestmentResource extends Resource
     public static function form(Form $form): Form
     {
         return $form
-            ->schema([
-                Forms\Components\Select::make('user_id')
-                    ->relationship('user', 'name')
-                    ->preload()
-                    ->searchable()
-                    ->required(),
-                Forms\Components\TextInput::make('name')
-                    ->required(),
-                Forms\Components\Select::make('type')
-                    ->options(InvestmentType::class)
-                    ->required(),
-                Forms\Components\DatePicker::make('purchase_date')
-                    ->native(false)
-                    ->required(),
-                MoneyInput::make('purchase_price')
-                    ->required()
-                    ->numeric(),
-                MoneyInput::make('current_price')
-                    ->required()
-                    ->numeric(),
-                Forms\Components\TextInput::make('quantity')
-                    ->required()
-                    ->numeric(),
-                Forms\Components\Select::make('currency_id')
-                    ->relationship('currency', 'name')
-                    ->required(),
-            ]);
+            ->schema(InvestmentForm::getForm());
     }
 
     public static function table(Table $table): Table

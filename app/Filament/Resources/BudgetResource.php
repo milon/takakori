@@ -2,15 +2,14 @@
 
 namespace App\Filament\Resources;
 
+use App\Filament\Resources\BudgetResource\Forms\BudgetFrom;
 use App\Filament\Resources\BudgetResource\Pages;
 use App\Models\Budget;
-use Filament\Forms;
 use Filament\Forms\Form;
 use Filament\Resources\Resource;
 use Filament\Tables;
 use Filament\Tables\Filters\SelectFilter;
 use Filament\Tables\Table;
-use Pelmered\FilamentMoneyField\Forms\Components\MoneyInput;
 use Pelmered\FilamentMoneyField\Tables\Columns\MoneyColumn;
 
 class BudgetResource extends Resource
@@ -24,27 +23,7 @@ class BudgetResource extends Resource
     public static function form(Form $form): Form
     {
         return $form
-            ->schema([
-                Forms\Components\Select::make('user_id')
-                    ->relationship('user', 'name')
-                    ->required(),
-                Forms\Components\Select::make('category_id')
-                    ->relationship('category', 'name')
-                    ->required(),
-                Forms\Components\Select::make('currency_id')
-                    ->relationship('currency', 'name')
-                    ->preload()
-                    ->required(),
-                MoneyInput::make('amount')
-                    ->required()
-                    ->numeric(),
-                Forms\Components\DatePicker::make('start_date')
-                    ->native(false)
-                    ->required(),
-                Forms\Components\DatePicker::make('end_date')
-                    ->native(false)
-                    ->required(),
-            ]);
+            ->schema(BudgetFrom::getForm());
     }
 
     public static function table(Table $table): Table

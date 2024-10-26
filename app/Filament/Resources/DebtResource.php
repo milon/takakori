@@ -3,9 +3,9 @@
 namespace App\Filament\Resources;
 
 use App\Enums\DebtType;
+use App\Filament\Resources\DebtResource\Forms\DebtForm;
 use App\Filament\Resources\DebtResource\Pages;
 use App\Models\Debt;
-use Filament\Forms;
 use Filament\Forms\Form;
 use Filament\Resources\Resource;
 use Filament\Tables;
@@ -13,7 +13,6 @@ use Filament\Tables\Filters\SelectFilter;
 use Filament\Tables\Table;
 use Illuminate\Contracts\Support\Htmlable;
 use Illuminate\Database\Eloquent\Model;
-use Pelmered\FilamentMoneyField\Forms\Components\MoneyInput;
 use Pelmered\FilamentMoneyField\Tables\Columns\MoneyColumn;
 
 class DebtResource extends Resource
@@ -27,37 +26,7 @@ class DebtResource extends Resource
     public static function form(Form $form): Form
     {
         return $form
-            ->schema([
-                Forms\Components\Select::make('user_id')
-                    ->relationship('user', 'name')
-                    ->preload()
-                    ->searchable()
-                    ->required(),
-                Forms\Components\TextInput::make('name')
-                    ->required(),
-                Forms\Components\Select::make('type')
-                    ->options(DebtType::class)
-                    ->required(),
-                Forms\Components\Select::make('currency_id')
-                    ->relationship('currency', 'name')
-                    ->required(),
-                Forms\Components\TextInput::make('interest_rate')
-                    ->suffix('%')
-                    ->required()
-                    ->numeric(),
-                MoneyInput::make('initial_amount')
-                    ->required()
-                    ->numeric(),
-                MoneyInput::make('current_balance')
-                    ->required()
-                    ->numeric(),
-                MoneyInput::make('min_payment')
-                    ->required()
-                    ->numeric(),
-                Forms\Components\DatePicker::make('due_date')
-                    ->native(false)
-                    ->required(),
-            ]);
+            ->schema(DebtForm::getForm());
     }
 
     public static function table(Table $table): Table

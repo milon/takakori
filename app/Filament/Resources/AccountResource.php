@@ -3,11 +3,11 @@
 namespace App\Filament\Resources;
 
 use App\Enums\AccountType;
+use App\Filament\Resources\AccountResource\Forms\AccountForm;
 use App\Filament\Resources\AccountResource\Pages;
 use App\Filament\Resources\AccountResource\RelationManagers\RecurringTransactionsRelationManager;
 use App\Filament\Resources\AccountResource\RelationManagers\TransactionsRelationManager;
 use App\Models\Account;
-use Filament\Forms;
 use Filament\Forms\Form;
 use Filament\Infolists\Components\Section;
 use Filament\Infolists\Components\TextEntry;
@@ -18,7 +18,6 @@ use Filament\Tables\Filters\SelectFilter;
 use Filament\Tables\Table;
 use Illuminate\Contracts\Support\Htmlable;
 use Illuminate\Database\Eloquent\Model;
-use Pelmered\FilamentMoneyField\Forms\Components\MoneyInput;
 use Pelmered\FilamentMoneyField\Infolists\Components\MoneyEntry;
 use Pelmered\FilamentMoneyField\Tables\Columns\MoneyColumn;
 
@@ -33,29 +32,7 @@ class AccountResource extends Resource
     public static function form(Form $form): Form
     {
         return $form
-            ->schema([
-                Forms\Components\Select::make('user_id')
-                    ->relationship('user', 'name')
-                    ->preload()
-                    ->searchable()
-                    ->required(),
-                Forms\Components\Select::make('currency_id')
-                    ->relationship('currency', 'name')
-                    ->required(),
-                Forms\Components\TextInput::make('name')
-                    ->required(),
-                Forms\Components\TextInput::make('number')
-                    ->required(),
-                Forms\Components\TextInput::make('institute')
-                    ->required(),
-                Forms\Components\ToggleButtons::make('type')
-                    ->options(AccountType::class)
-                    ->inline()
-                    ->required(),
-                MoneyInput::make('balance')
-                    ->required()
-                    ->numeric(),
-            ]);
+            ->schema(AccountForm::getForm());
     }
 
     public static function table(Table $table): Table

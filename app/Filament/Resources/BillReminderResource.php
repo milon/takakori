@@ -3,9 +3,9 @@
 namespace App\Filament\Resources;
 
 use App\Enums\BillingFrequency;
+use App\Filament\Resources\BillReminderResource\Forms\BillReminderForm;
 use App\Filament\Resources\BillReminderResource\Pages;
 use App\Models\BillReminder;
-use Filament\Forms;
 use Filament\Forms\Form;
 use Filament\Resources\Resource;
 use Filament\Tables;
@@ -15,7 +15,6 @@ use Filament\Tables\Table;
 use Illuminate\Contracts\Support\Htmlable;
 use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\Model;
-use Pelmered\FilamentMoneyField\Forms\Components\MoneyInput;
 use Pelmered\FilamentMoneyField\Tables\Columns\MoneyColumn;
 
 class BillReminderResource extends Resource
@@ -29,35 +28,7 @@ class BillReminderResource extends Resource
     public static function form(Form $form): Form
     {
         return $form
-            ->schema([
-                Forms\Components\Select::make('user_id')
-                    ->relationship('user', 'name')
-                    ->preload()
-                    ->searchable()
-                    ->required(),
-                Forms\Components\Select::make('category_id')
-                    ->relationship('category', 'name')
-                    ->preload()
-                    ->searchable()
-                    ->required(),
-                Forms\Components\Select::make('currency_id')
-                    ->relationship('currency', 'name')
-                    ->preload()
-                    ->required(),
-                Forms\Components\TextInput::make('name')
-                    ->required(),
-                MoneyInput::make('amount')
-                    ->required()
-                    ->numeric(),
-                Forms\Components\DatePicker::make('due_date')
-                    ->native(false)
-                    ->required(),
-                Forms\Components\Select::make('frequency')
-                    ->options(BillingFrequency::class)
-                    ->required(),
-                Forms\Components\Toggle::make('is_paid')
-                    ->required(),
-            ]);
+            ->schema(BillReminderForm::getForm());
     }
 
     public static function table(Table $table): Table
