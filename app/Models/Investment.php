@@ -3,6 +3,7 @@
 namespace App\Models;
 
 use App\Enums\InvestmentType;
+use Illuminate\Database\Eloquent\Casts\Attribute;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
@@ -47,5 +48,18 @@ class Investment extends Model
     public function currency(): BelongsTo
     {
         return $this->belongsTo(Currency::class);
+    }
+
+    protected function performance(): Attribute
+    {
+        return Attribute::make(
+            get: fn() => round((($this->current_price - $this->purchase_price) / $this->purchase_price) * 100, 2),
+        );
+    }
+
+    protected function marketValue() : Attribute {
+        return Attribute::make(
+            get: fn() => $this->current_price * $this->quantity,
+        );
     }
 }

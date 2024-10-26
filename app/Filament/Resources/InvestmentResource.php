@@ -6,12 +6,16 @@ use App\Filament\Resources\InvestmentResource\Forms\InvestmentForm;
 use App\Filament\Resources\InvestmentResource\Pages;
 use App\Models\Investment;
 use Filament\Forms\Form;
+use Filament\Infolists\Components\Section;
+use Filament\Infolists\Components\TextEntry;
+use Filament\Infolists\Infolist;
 use Filament\Resources\Resource;
 use Filament\Tables;
 use Filament\Tables\Filters\SelectFilter;
 use Filament\Tables\Table;
 use Illuminate\Contracts\Support\Htmlable;
 use Illuminate\Database\Eloquent\Model;
+use Pelmered\FilamentMoneyField\Infolists\Components\MoneyEntry;
 use Pelmered\FilamentMoneyField\Tables\Columns\MoneyColumn;
 
 class InvestmentResource extends Resource
@@ -42,19 +46,19 @@ class InvestmentResource extends Resource
                     ->searchable(),
                 Tables\Columns\TextColumn::make('purchase_date')
                     ->date()
-                    ->sortable(),
+                    ->sortable()
+                    ->toggleable(isToggledHiddenByDefault: true),
                 Tables\Columns\TextColumn::make('currency.code')
                     ->numeric()
                     ->sortable(),
                 MoneyColumn::make('purchase_price')
-                    ->numeric()
                     ->sortable(),
                 MoneyColumn::make('current_price')
-                    ->numeric()
                     ->sortable(),
                 Tables\Columns\TextColumn::make('quantity')
                     ->numeric()
-                    ->sortable(),
+                    ->sortable()
+                    ->toggleable(isToggledHiddenByDefault: true),
                 Tables\Columns\TextColumn::make('created_at')
                     ->dateTime()
                     ->sortable()
@@ -70,13 +74,39 @@ class InvestmentResource extends Resource
             ])
             ->actions([
                 Tables\Actions\EditAction::make(),
-                Tables\Actions\DeleteAction::make()->requiresConfirmation(),
+                Tables\Actions\ViewAction::make(),
             ])
             ->bulkActions([
                 Tables\Actions\BulkActionGroup::make([
                     Tables\Actions\DeleteBulkAction::make(),
                 ]),
             ]);
+    }
+
+    public static function infolist(Infolist $infolist): Infolist
+    {
+        return $infolist->schema([
+            Section::make('Account Details')
+                ->columns(2)
+                ->schema([
+                    TextEntry::make('user.name')->label('User'),
+                    TextEntry::make('user.email')->label('Email'),
+                    TextEntry::make('currency.code')->label('Currency code'),
+                    TextEntry::make('currency.name')->label('Currency name'),
+                ]),
+            Section::make('Investment Details')
+                ->columns(2)
+                ->schema([
+                    TextEntry::make('name')->label('Investment name'),
+                    TextEntry::make('type')->label('Investment type'),
+                    TextEntry::make('purchase_date')->label('Purchase date'),
+                    TextEntry::make('quantity')->label('Quantity'),
+                    MoneyEntry::make('purchase_price')->label('Purchase price'),
+                    MoneyEntry::make('current_price')->label('Current price'),
+                    TextEntry::make('performance')->label('Performance')->suffix('%'),
+                    MoneyEntry::make('marketValue')->label('Market value'),
+                ]),
+        ]);
     }
 
     public static function getRelations(): array
@@ -90,6 +120,7 @@ class InvestmentResource extends Resource
     {
         return [
             'index' => Pages\ListInvestments::route('/'),
+            'view' => Pages\ViewInvestment::route('/{record}')
             // 'create' => Pages\CreateInvestment::route('/create'),
             // 'edit' => Pages\EditInvestment::route('/{record}/edit'),
         ];
