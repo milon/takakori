@@ -10,6 +10,7 @@ use Filament\Resources\Resource;
 use Filament\Tables;
 use Filament\Tables\Filters\SelectFilter;
 use Filament\Tables\Table;
+use Pelmered\FilamentMoneyField\Tables\Columns\MoneyColumn;
 
 class GoalResource extends Resource
 {
@@ -38,10 +39,10 @@ class GoalResource extends Resource
                 Tables\Columns\TextColumn::make('currency.code')
                     ->numeric()
                     ->sortable(),
-                Tables\Columns\TextColumn::make('target_amount')
+                MoneyColumn::make('target_amount')
                     ->numeric()
                     ->sortable(),
-                Tables\Columns\TextColumn::make('current_amount')
+                MoneyColumn::make('current_amount')
                     ->numeric()
                     ->sortable(),
                 Tables\Columns\TextColumn::make('deadline')

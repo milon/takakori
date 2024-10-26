@@ -3,6 +3,12 @@
 namespace App\Filament\Resources;
 
 use App\Filament\Resources\UserResource\Pages;
+use App\Filament\Resources\UserResource\RelationManagers\AccountsRelationManager;
+use App\Filament\Resources\UserResource\RelationManagers\BillRemindersRelationManager;
+use App\Filament\Resources\UserResource\RelationManagers\BudgetsRelationManager;
+use App\Filament\Resources\UserResource\RelationManagers\DebtsRelationManager;
+use App\Filament\Resources\UserResource\RelationManagers\GoalsRelationManager;
+use App\Filament\Resources\UserResource\RelationManagers\InvestmentsRelationManager;
 use App\Models\User;
 use Filament\Forms;
 use Filament\Forms\Form;
@@ -117,7 +123,12 @@ class UserResource extends Resource
     public static function getRelations(): array
     {
         return [
-            //
+            AccountsRelationManager::class,
+            BillRemindersRelationManager::class,
+            BudgetsRelationManager::class,
+            DebtsRelationManager::class,
+            GoalsRelationManager::class,
+            InvestmentsRelationManager::class,
         ];
     }
 

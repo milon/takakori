@@ -6,6 +6,7 @@ use Filament\Support\Contracts\HasLabel;
 
 enum BillingFrequency: string implements HasLabel
 {
+    case Onetime = 'one-time';
     case Daily = 'daily';
     case Weekly = 'weekly';
     case BiWeekly = 'bi-weekly';
@@ -17,6 +18,7 @@ enum BillingFrequency: string implements HasLabel
     public function getLabel(): ?string
     {
         return match ($this) {
+            self::Onetime => 'Onetime',
             self::Daily => 'Daily',
             self::Weekly => 'Weekly',
             self::BiWeekly => 'Bi-Weekly',

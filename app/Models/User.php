@@ -50,9 +50,9 @@ class User extends Authenticatable implements HasAvatar
         return $this->hasMany(Account::class);
     }
 
-    public function categories(): HasMany
+    public function investments(): HasMany
     {
-        return $this->hasMany(Category::class);
+        return $this->hasMany(Investment::class);
     }
 
     public function transactions(): HasMany
@@ -65,9 +65,19 @@ class User extends Authenticatable implements HasAvatar
         return $this->hasMany(Budget::class);
     }
 
+    public function billReminders(): HasMany
+    {
+        return $this->hasMany(BillReminder::class);
+    }
+
     public function goals(): HasMany
     {
         return $this->hasMany(Goal::class);
+    }
+
+    public function debts(): HasMany
+    {
+        return $this->hasMany(Debt::class);
     }
 
     public function recurringTransactions(): HasMany
