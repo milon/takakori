@@ -72,6 +72,7 @@ class DebtResource extends Resource
                     ->toggleable(isToggledHiddenByDefault: true),
             ])
             ->filters([
+                SelectFilter::make('User')->relationship('user', 'name')->preload()->searchable(),
                 SelectFilter::make('Currency')->relationship('currency', 'code')->preload(),
                 SelectFilter::make('type')->options(DebtType::class),
             ])

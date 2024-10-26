@@ -63,6 +63,7 @@ class TransactionResource extends Resource
                     ->toggleable(isToggledHiddenByDefault: true),
             ])
             ->filters([
+                SelectFilter::make('User')->relationship('user', 'name')->preload()->searchable(),
                 SelectFilter::make('Category')->relationship('category', 'name')->preload()->searchable(),
                 SelectFilter::make('Currency')->relationship('currency', 'code')->preload(),
                 SelectFilter::make('Tag')->relationship('tags', 'name')->preload()->searchable(),
