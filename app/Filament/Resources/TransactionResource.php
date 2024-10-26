@@ -45,7 +45,6 @@ class TransactionResource extends Resource
                     ->searchable()
                     ->sortable(),
                 Tables\Columns\TextColumn::make('currency.code')
-                    ->numeric()
                     ->sortable(),
                 MoneyColumn::make('amount')
                     ->sortable(),

@@ -7,6 +7,7 @@ use Filament\Forms\Form;
 use Filament\Resources\RelationManagers\RelationManager;
 use Filament\Tables;
 use Filament\Tables\Table;
+use Illuminate\Database\Eloquent\Model;
 use Pelmered\FilamentMoneyField\Tables\Columns\MoneyColumn;
 
 class InvestmentsRelationManager extends RelationManager
@@ -30,6 +31,11 @@ class InvestmentsRelationManager extends RelationManager
                 Tables\Columns\TextColumn::make('currency.code'),
                 MoneyColumn::make('purchase_price'),
                 MoneyColumn::make('current_price'),
+                Tables\Columns\TextColumn::make('performance')
+                    ->label('Performance')
+                    ->suffix('%')
+                    ->icon(fn(Model $model) => getInvestmentPerformanceIcon($model))
+                    ->iconColor(fn(Model $model) => getInvestmentPerformanceColor($model)),
                 Tables\Columns\TextColumn::make('quantity'),
             ])
             ->filters([
