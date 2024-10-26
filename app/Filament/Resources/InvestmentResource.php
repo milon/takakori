@@ -55,6 +55,9 @@ class InvestmentResource extends Resource
                     ->sortable(),
                 MoneyColumn::make('current_price')
                     ->sortable(),
+                Tables\Columns\TextColumn::make('performance')
+                    ->icon(fn(Model $model) => getInvestmentPerformanceIcon($model))
+                    ->suffix('%'),
                 Tables\Columns\TextColumn::make('quantity')
                     ->numeric()
                     ->sortable()
@@ -103,7 +106,10 @@ class InvestmentResource extends Resource
                     TextEntry::make('quantity')->label('Quantity'),
                     MoneyEntry::make('purchase_price')->label('Purchase price'),
                     MoneyEntry::make('current_price')->label('Current price'),
-                    TextEntry::make('performance')->label('Performance')->suffix('%'),
+                    TextEntry::make('performance')
+                        ->label('Performance')
+                        ->suffix('%')
+                        ->icon(fn(Model $model) => getInvestmentPerformanceIcon($model)),
                     MoneyEntry::make('marketValue')->label('Market value'),
                 ]),
         ]);
@@ -135,4 +141,5 @@ class InvestmentResource extends Resource
     {
         return ['name', 'type'];
     }
+
 }
