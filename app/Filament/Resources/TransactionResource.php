@@ -65,6 +65,7 @@ class TransactionResource extends Resource
             ->filters([
                 SelectFilter::make('Category')->relationship('category', 'name')->preload()->searchable(),
                 SelectFilter::make('Currency')->relationship('currency', 'code')->preload(),
+                SelectFilter::make('Tag')->relationship('tags', 'name')->preload()->searchable(),
             ])
             ->actions([
                 Tables\Actions\EditAction::make()->after(function (Model $record, array $data) {
