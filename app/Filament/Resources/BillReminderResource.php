@@ -45,7 +45,6 @@ class BillReminderResource extends Resource
                     ->searchable(),
                 Tables\Columns\TextColumn::make('currency.code'),
                 MoneyColumn::make('amount')
-                    ->numeric()
                     ->sortable(),
                 Tables\Columns\TextColumn::make('due_date')
                     ->date()

@@ -22,8 +22,7 @@ class BudgetFrom
                 ->preload()
                 ->required(),
             MoneyInput::make('amount')
-                ->required()
-                ->numeric(),
+                ->required(),
             DatePicker::make('start_date')
                 ->native(false)
                 ->required(),

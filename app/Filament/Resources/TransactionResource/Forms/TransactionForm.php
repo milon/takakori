@@ -31,8 +31,7 @@ class TransactionForm
                 ->relationship('currency', 'name')
                 ->required(),
             MoneyInput::make('amount')
-                ->required()
-                ->numeric(),
+                ->required(),
             DateTimePicker::make('date')
                 ->native(false)
                 ->required(),

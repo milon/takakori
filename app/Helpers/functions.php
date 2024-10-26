@@ -19,3 +19,16 @@ function getInvestmentPerformanceIcon(Investment $record): string
 
     return 'fas-arrow-trend-down';
 }
+
+function getInvestmentPerformanceColor(Investment $record): string
+{
+    if ($record->performance > 0) {
+        return 'success';
+    }
+
+    if ($record->performance == 0) {
+        return 'info';
+    }
+
+    return 'danger';
+}

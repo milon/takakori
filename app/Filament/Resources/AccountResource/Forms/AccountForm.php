@@ -32,8 +32,7 @@ class AccountForm
                 ->inline()
                 ->required(),
             MoneyInput::make('balance')
-                ->required()
-                ->numeric(),
+                ->required(),
         ];
     }
 }

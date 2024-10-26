@@ -53,7 +53,6 @@ class AccountResource extends Resource
                 Tables\Columns\TextColumn::make('currency.code')
                     ->sortable(),
                 MoneyColumn::make('balance')
-                    ->numeric()
                     ->sortable(),
                 Tables\Columns\TextColumn::make('created_at')
                     ->dateTime()

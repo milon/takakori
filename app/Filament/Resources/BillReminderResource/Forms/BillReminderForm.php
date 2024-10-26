@@ -31,8 +31,7 @@ class BillReminderForm
             TextInput::make('name')
                 ->required(),
             MoneyInput::make('amount')
-                ->required()
-                ->numeric(),
+                ->required(),
             DatePicker::make('due_date')
                 ->native(false)
                 ->required(),

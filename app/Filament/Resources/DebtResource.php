@@ -45,18 +45,14 @@ class DebtResource extends Resource
                     ->numeric()
                     ->sortable(),
                 Tables\Columns\TextColumn::make('interest_rate')
-                    ->numeric()
                     ->suffix('%')
                     ->sortable(),
                 MoneyColumn::make('initial_amount')
-                    ->numeric()
                     ->sortable()
                     ->toggleable(isToggledHiddenByDefault: true),
                 MoneyColumn::make('current_balance')
-                    ->numeric()
                     ->sortable(),
                 MoneyColumn::make('min_payment')
-                    ->numeric()
                     ->sortable()
                     ->toggleable(isToggledHiddenByDefault: true),
                 Tables\Columns\TextColumn::make('due_date')

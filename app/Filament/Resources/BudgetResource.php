@@ -39,7 +39,6 @@ class BudgetResource extends Resource
                     ->sortable(),
                 Tables\Columns\TextColumn::make('currency.code'),
                 MoneyColumn::make('amount')
-                    ->numeric()
                     ->sortable(),
                 Tables\Columns\TextColumn::make('start_date')
                     ->date()

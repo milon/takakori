@@ -57,6 +57,7 @@ class InvestmentResource extends Resource
                     ->sortable(),
                 Tables\Columns\TextColumn::make('performance')
                     ->icon(fn(Model $model) => getInvestmentPerformanceIcon($model))
+                    ->iconColor(fn(Model $model) => getInvestmentPerformanceColor($model))
                     ->suffix('%'),
                 Tables\Columns\TextColumn::make('quantity')
                     ->numeric()
@@ -109,7 +110,8 @@ class InvestmentResource extends Resource
                     TextEntry::make('performance')
                         ->label('Performance')
                         ->suffix('%')
-                        ->icon(fn(Model $model) => getInvestmentPerformanceIcon($model)),
+                        ->icon(fn(Model $model) => getInvestmentPerformanceIcon($model))
+                        ->iconColor(fn(Model $model) => getInvestmentPerformanceColor($model)),
                     MoneyEntry::make('marketValue')->label('Market value'),
                 ]),
         ]);

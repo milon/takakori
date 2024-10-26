@@ -31,14 +31,11 @@ class DebtForm
                 ->required()
                 ->numeric(),
             MoneyInput::make('initial_amount')
-                ->required()
-                ->numeric(),
+                ->required(),
             MoneyInput::make('current_balance')
-                ->required()
-                ->numeric(),
+                ->required(),
             MoneyInput::make('min_payment')
-                ->required()
-                ->numeric(),
+                ->required(),
             DatePicker::make('due_date')
                 ->native(false)
                 ->required(),

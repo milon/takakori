@@ -23,11 +23,9 @@ class GoalForm
             TextInput::make('name')
                 ->required(),
             MoneyInput::make('target_amount')
-                ->required()
-                ->numeric(),
+                ->required(),
             MoneyInput::make('current_amount')
-                ->required()
-                ->numeric(),
+                ->required(),
             DatePicker::make('deadline')
                 ->native(false)
                 ->required(),

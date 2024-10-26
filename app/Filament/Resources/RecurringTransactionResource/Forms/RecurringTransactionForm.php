@@ -29,8 +29,7 @@ class RecurringTransactionForm
                 ->relationship('currency', 'name')
                 ->required(),
             MoneyInput::make('amount')
-                ->required()
-                ->numeric(),
+                ->required(),
             Select::make('frequency')
                 ->options(BillingFrequency::class)
                 ->required(),

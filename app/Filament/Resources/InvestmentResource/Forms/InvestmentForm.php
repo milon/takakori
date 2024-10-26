@@ -27,11 +27,9 @@ class InvestmentForm
                 ->native(false)
                 ->required(),
             MoneyInput::make('purchase_price')
-                ->required()
-                ->numeric(),
+                ->required(),
             MoneyInput::make('current_price')
-                ->required()
-                ->numeric(),
+                ->required(),
             TextInput::make('quantity')
                 ->required()
                 ->numeric(),

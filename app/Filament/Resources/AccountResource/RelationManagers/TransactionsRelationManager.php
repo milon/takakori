@@ -7,6 +7,7 @@ use Filament\Forms\Form;
 use Filament\Resources\RelationManagers\RelationManager;
 use Filament\Tables;
 use Filament\Tables\Table;
+use Pelmered\FilamentMoneyField\Tables\Columns\MoneyColumn;
 
 class TransactionsRelationManager extends RelationManager
 {
@@ -25,7 +26,7 @@ class TransactionsRelationManager extends RelationManager
             ->columns([
                 Tables\Columns\TextColumn::make('category.name'),
                 Tables\Columns\TextColumn::make('currency.code'),
-                Tables\Columns\TextColumn::make('amount'),
+                MoneyColumn::make('amount'),
                 Tables\Columns\TextColumn::make('date')->since(),
             ])
             ->filters([

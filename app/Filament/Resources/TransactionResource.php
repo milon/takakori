@@ -48,7 +48,6 @@ class TransactionResource extends Resource
                     ->numeric()
                     ->sortable(),
                 MoneyColumn::make('amount')
-                    ->numeric()
                     ->sortable(),
                 Tables\Columns\TextColumn::make('date')
                     ->dateTime()
