@@ -25,7 +25,7 @@ class BillReminderFactory extends Factory
             'category_id' => rand(1, 10),
             'currency_id' => rand(1, 4),
             'name' => $this->faker->words(3, true),
-            'amount' => $this->faker->numberBetween(1, 10000),
+            'amount' => $this->faker->numberBetween(10, 1000),
             'due_date' => $this->faker->dateTimeBetween(now()->subYears(2), now()->addYears(3)),
             'frequency' => $this->faker->randomElement(array_column(BillingFrequency::cases(), 'value')),
             'is_paid' => $this->faker->boolean(),

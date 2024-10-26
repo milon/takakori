@@ -24,8 +24,8 @@ class TransactionFactory extends Factory
             'account_id' => rand(1, 20),
             'category_id' => rand(1, 10),
             'currency_id' => rand(1, 4),
-            'amount' => $this->faker->numberBetween(-10000, 10000),
-            'date' => $this->faker->dateTime(),
+            'amount' => $this->faker->numberBetween(10, 1000),
+            'date' => $this->faker->dateTimeBetween(now()->subYears(2), now()),
             'description' => $this->faker->text(),
         ];
     }

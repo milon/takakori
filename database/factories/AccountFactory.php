@@ -27,7 +27,7 @@ class AccountFactory extends Factory
             'number' => $this->faker->randomNumber(8, true),
             'institute' => $this->faker->words(3, true),
             'type' => $this->faker->randomElement(array_column(AccountType::cases(), 'value')),
-            'balance' => $this->faker->numberBetween(-10000, 10000),
+            'balance' => $this->faker->numberBetween(100, 10000),
         ];
     }
 }

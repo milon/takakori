@@ -25,9 +25,9 @@ class DebtFactory extends Factory
             'name' => $this->faker->words(2, true),
             'type' => $this->faker->randomElement(array_column(DebtType::cases(), 'value')),
             'interest_rate' => $this->faker->randomFloat(0, 0, 10),
-            'initial_amount' => $this->faker->numberBetween(-10000, 10000),
-            'current_balance' => $this->faker->numberBetween(-10000, 10000),
-            'min_payment' => $this->faker->numberBetween(-10000, 10000),
+            'initial_amount' => $this->faker->numberBetween(100, 10000),
+            'current_balance' => $this->faker->numberBetween(100, 10000),
+            'min_payment' => $this->faker->numberBetween(100, 1000),
             'due_date' => $this->faker->dateTimeBetween(now()->subYears(2), now()->addYears(3)),
             'currency_id' => rand(1, 4),
         ];

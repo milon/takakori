@@ -15,6 +15,7 @@ use App\Models\Transaction;
 use App\Models\User;
 // use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use Illuminate\Database\Seeder;
+use Illuminate\Support\Facades\DB;
 
 class DatabaseSeeder extends Seeder
 {
@@ -38,5 +39,15 @@ class DatabaseSeeder extends Seeder
         Investment::factory(15)->create();
         Transaction::factory(150)->create();
         RecurringTransaction::factory(150)->create();
+
+        foreach ((range(1, 50)) as $index) {
+            DB::table('taggables')->insert(
+                [
+                    'tag_id' => rand(1, 30),
+                    'taggable_id' => rand(1, 20),
+                    'taggable_type' => rand(0, 1) == 1 ? Transaction::class : RecurringTransaction::class,
+                ]
+            );
+        }
     }
 }
