@@ -4,6 +4,7 @@ namespace App\Filament\Resources;
 
 use App\Filament\Resources\InvestmentResource\Forms\InvestmentForm;
 use App\Filament\Resources\InvestmentResource\Pages;
+use App\Filament\Resources\InvestmentResource\Widgets\InvestmentOverview;
 use App\Models\Investment;
 use Filament\Forms\Form;
 use Filament\Infolists\Components\Section;
@@ -115,6 +116,13 @@ class InvestmentResource extends Resource
                     MoneyEntry::make('marketValue')->label('Market value'),
                 ]),
         ]);
+    }
+
+    public static function getWidgets(): array
+    {
+        return [
+            InvestmentOverview::make(),
+        ];
     }
 
     public static function getRelations(): array

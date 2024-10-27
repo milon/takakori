@@ -1,6 +1,10 @@
 <?php
 
 use App\Models\Investment;
+use Money\Currencies\ISOCurrencies;
+use Money\Currency;
+use Money\Formatter\IntlMoneyFormatter;
+use Money\Money;
 
 function get_default_avatar(string $name): string
 {
@@ -31,4 +35,15 @@ function getInvestmentPerformanceColor(Investment $record): string
     }
 
     return 'danger';
+}
+
+function formatMoney(int $amount, String $currency = 'USD'): string
+{
+    $money = new Money($amount, new Currency($currency));
+    $currencies = new ISOCurrencies();
+
+    $numberFormatter = new \NumberFormatter('en_US', \NumberFormatter::CURRENCY);
+    $moneyFormatter = new IntlMoneyFormatter($numberFormatter, $currencies);
+
+    return $moneyFormatter->format($money);
 }

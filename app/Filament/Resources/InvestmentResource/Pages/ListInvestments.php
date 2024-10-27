@@ -3,6 +3,7 @@
 namespace App\Filament\Resources\InvestmentResource\Pages;
 
 use App\Filament\Resources\InvestmentResource;
+use App\Filament\Resources\InvestmentResource\Widgets\InvestmentOverview;
 use Filament\Actions;
 use Filament\Resources\Pages\ListRecords;
 
@@ -14,6 +15,13 @@ class ListInvestments extends ListRecords
     {
         return [
             Actions\CreateAction::make(),
+        ];
+    }
+
+    protected function getHeaderWidgets(): array
+    {
+        return [
+            InvestmentOverview::class,
         ];
     }
 }
