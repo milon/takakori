@@ -14,11 +14,14 @@ class InvestmentOverview extends BaseWidget
     {
         return [
             Stat::make('Total investments', formatMoney(Investment::query()->get()->sum('marketValue')))
-                ->icon('fas-money-bills'),
+                ->icon('fas-money-bills')
+                ->description('Marketvalue of total investments'),
             Stat::make('Positive Performer', Investment::query()->whereColumn('current_price', '>', 'purchase_price')->count())
-                ->icon('fas-arrow-trend-up'),
+                ->icon('fas-arrow-trend-up')
+                ->description('Investments that are growing positively'),
             Stat::make('Negative Performer', Investment::query()->whereColumn('current_price', '<', 'purchase_price')->count())
-                ->icon('fas-arrow-trend-down'),
+                ->icon('fas-arrow-trend-down')
+                ->description('Investments that are growing negatively'),
         ];
     }
 }
