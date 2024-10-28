@@ -34,8 +34,8 @@ class InvestmentsRelationManager extends RelationManager
                 Tables\Columns\TextColumn::make('performance')
                     ->label('Performance')
                     ->suffix('%')
-                    ->icon(fn(Model $model) => getInvestmentPerformanceIcon($model))
-                    ->iconColor(fn(Model $model) => getInvestmentPerformanceColor($model)),
+                    ->icon(fn (Model $model) => getInvestmentPerformanceIcon($model))
+                    ->iconColor(fn (Model $model) => getInvestmentPerformanceColor($model)),
                 Tables\Columns\TextColumn::make('quantity'),
             ])
             ->filters([

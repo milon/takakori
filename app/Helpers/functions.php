@@ -37,10 +37,10 @@ function getInvestmentPerformanceColor(Investment $record): string
     return 'danger';
 }
 
-function formatMoney(int $amount, String $currency = 'USD'): string
+function formatMoney(int $amount, string $currency = 'USD'): string
 {
     $money = new Money($amount, new Currency($currency));
-    $currencies = new ISOCurrencies();
+    $currencies = new ISOCurrencies;
 
     $numberFormatter = new \NumberFormatter('en_US', \NumberFormatter::CURRENCY);
     $moneyFormatter = new IntlMoneyFormatter($numberFormatter, $currencies);

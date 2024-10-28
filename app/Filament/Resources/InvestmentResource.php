@@ -57,8 +57,8 @@ class InvestmentResource extends Resource
                 MoneyColumn::make('current_price')
                     ->sortable(),
                 Tables\Columns\TextColumn::make('performance')
-                    ->icon(fn(Model $model) => getInvestmentPerformanceIcon($model))
-                    ->iconColor(fn(Model $model) => getInvestmentPerformanceColor($model))
+                    ->icon(fn (Model $model) => getInvestmentPerformanceIcon($model))
+                    ->iconColor(fn (Model $model) => getInvestmentPerformanceColor($model))
                     ->suffix('%'),
                 Tables\Columns\TextColumn::make('quantity')
                     ->numeric()
@@ -111,8 +111,8 @@ class InvestmentResource extends Resource
                     TextEntry::make('performance')
                         ->label('Performance')
                         ->suffix('%')
-                        ->icon(fn(Model $model) => getInvestmentPerformanceIcon($model))
-                        ->iconColor(fn(Model $model) => getInvestmentPerformanceColor($model)),
+                        ->icon(fn (Model $model) => getInvestmentPerformanceIcon($model))
+                        ->iconColor(fn (Model $model) => getInvestmentPerformanceColor($model)),
                     MoneyEntry::make('marketValue')->label('Market value'),
                 ]),
         ]);
@@ -136,7 +136,7 @@ class InvestmentResource extends Resource
     {
         return [
             'index' => Pages\ListInvestments::route('/'),
-            'view' => Pages\ViewInvestment::route('/{record}')
+            'view' => Pages\ViewInvestment::route('/{record}'),
             // 'create' => Pages\CreateInvestment::route('/create'),
             // 'edit' => Pages\EditInvestment::route('/{record}/edit'),
         ];
@@ -151,5 +151,4 @@ class InvestmentResource extends Resource
     {
         return ['name', 'type'];
     }
-
 }

@@ -53,13 +53,14 @@ class Investment extends Model
     protected function performance(): Attribute
     {
         return Attribute::make(
-            get: fn() => round((($this->current_price - $this->purchase_price) / $this->purchase_price) * 100, 2),
+            get: fn () => round((($this->current_price - $this->purchase_price) / $this->purchase_price) * 100, 2),
         );
     }
 
-    protected function marketValue() : Attribute {
+    protected function marketValue(): Attribute
+    {
         return Attribute::make(
-            get: fn() => $this->current_price * $this->quantity,
+            get: fn () => $this->current_price * $this->quantity,
         );
     }
 }

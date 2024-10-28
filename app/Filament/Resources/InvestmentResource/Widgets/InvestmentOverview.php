@@ -5,8 +5,6 @@ namespace App\Filament\Resources\InvestmentResource\Widgets;
 use App\Models\Investment;
 use Filament\Widgets\StatsOverviewWidget as BaseWidget;
 use Filament\Widgets\StatsOverviewWidget\Stat;
-use Money\Money;
-use Pelmered\FilamentMoneyField\Infolists\Components\MoneyEntry;
 
 class InvestmentOverview extends BaseWidget
 {
