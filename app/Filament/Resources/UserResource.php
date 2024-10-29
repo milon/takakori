@@ -65,7 +65,7 @@ class UserResource extends Resource
                 Tables\Columns\ImageColumn::make('avatar_url')
                     ->label('Avatar')
                     ->circular()
-                    ->defaultImageUrl(fn ($record) => get_default_avatar($record->name)),
+                    ->defaultImageUrl(fn ($record) => getDefaultAvatar($record->name)),
                 Tables\Columns\TextColumn::make('name')
                     ->searchable(),
                 Tables\Columns\TextColumn::make('email')
@@ -106,7 +106,7 @@ class UserResource extends Resource
                 ->schema([
                     ImageEntry::make('avatar_url')
                         ->label('Avatar')
-                        ->defaultImageUrl(fn ($record) => get_default_avatar($record->name))
+                        ->defaultImageUrl(fn ($record) => getDefaultAvatar($record->name))
                         ->circular(),
                     Group::make()
                         ->columnSpan(2)

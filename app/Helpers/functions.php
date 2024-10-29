@@ -6,7 +6,7 @@ use Money\Currency;
 use Money\Formatter\IntlMoneyFormatter;
 use Money\Money;
 
-function get_default_avatar(string $name): string
+function getDefaultAvatar(string $name): string
 {
     return 'https://ui-avatars.com/api/?background=black&color=ffffff&name=' . urlencode($name);
 }
