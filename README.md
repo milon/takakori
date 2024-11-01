@@ -80,6 +80,10 @@ Then visit http://localhost to visit the site.
 
 > By default the app runs on Port `80`. If the port is used by other services, you can override it by changing the value of `APP_PORT` in `.env` file.
 
+## Screenshots
+
+You can see the screenshots [here](/screenshots.md).
+
 ## Author
 
 - [Nuruzzaman Milon](https://milon.im)
