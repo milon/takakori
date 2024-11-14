@@ -24,10 +24,8 @@ class BudgetFrom
             MoneyInput::make('amount')
                 ->required(),
             DatePicker::make('start_date')
-                ->native(false)
                 ->required(),
             DatePicker::make('end_date')
-                ->native(false)
                 ->required(),
         ];
     }

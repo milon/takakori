@@ -27,7 +27,6 @@ class GoalForm
             MoneyInput::make('current_amount')
                 ->required(),
             DatePicker::make('deadline')
-                ->native(false)
                 ->required(),
         ];
     }

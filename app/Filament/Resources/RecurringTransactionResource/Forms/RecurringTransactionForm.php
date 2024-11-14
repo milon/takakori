@@ -34,10 +34,8 @@ class RecurringTransactionForm
                 ->options(BillingFrequency::class)
                 ->required(),
             DatePicker::make('start_date')
-                ->native(false)
                 ->required(),
-            DatePicker::make('end_date')
-                ->native(false),
+            DatePicker::make('end_date'),
         ];
     }
 }

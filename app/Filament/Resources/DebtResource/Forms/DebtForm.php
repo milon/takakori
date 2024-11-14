@@ -37,7 +37,6 @@ class DebtForm
             MoneyInput::make('min_payment')
                 ->required(),
             DatePicker::make('due_date')
-                ->native(false)
                 ->required(),
         ];
     }

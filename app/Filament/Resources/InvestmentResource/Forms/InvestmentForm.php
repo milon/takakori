@@ -24,7 +24,6 @@ class InvestmentForm
                 ->options(InvestmentType::class)
                 ->required(),
             DatePicker::make('purchase_date')
-                ->native(false)
                 ->required(),
             MoneyInput::make('purchase_price')
                 ->required(),

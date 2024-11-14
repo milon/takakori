@@ -33,7 +33,6 @@ class BillReminderForm
             MoneyInput::make('amount')
                 ->required(),
             DatePicker::make('due_date')
-                ->native(false)
                 ->required(),
             Select::make('frequency')
                 ->options(BillingFrequency::class)

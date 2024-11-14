@@ -33,7 +33,6 @@ class TransactionForm
             MoneyInput::make('amount')
                 ->required(),
             DateTimePicker::make('date')
-                ->native(false)
                 ->required(),
             MarkdownEditor::make('description')
                 ->columnSpanFull(),
