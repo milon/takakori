@@ -6,7 +6,7 @@ use Filament\Forms\Components\DatePicker;
 use Filament\Forms\Components\Select;
 use Pelmered\FilamentMoneyField\Forms\Components\MoneyInput;
 
-class BudgetFrom
+class BudgetForm
 {
     public static function getForm(): array
     {
