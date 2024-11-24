@@ -2,7 +2,7 @@
 
 namespace App\Filament\Resources;
 
-use App\Filament\Resources\BudgetResource\Forms\BudgetFrom;
+use App\Filament\Resources\BudgetResource\Forms\BudgetForm;
 use App\Filament\Resources\BudgetResource\Pages;
 use App\Models\Budget;
 use Filament\Forms\Form;
@@ -23,7 +23,7 @@ class BudgetResource extends Resource
     public static function form(Form $form): Form
     {
         return $form
-            ->schema(BudgetFrom::getForm());
+            ->schema(BudgetForm::getForm());
     }
 
     public static function table(Table $table): Table
