@@ -8,6 +8,7 @@ use Carbon\Carbon;
 use Filament\Widgets\ChartWidget;
 use Flowframe\Trend\Trend;
 use Flowframe\Trend\TrendValue;
+use Illuminate\Support\Facades\Concurrency;
 
 class AccountBalanceChart extends ChartWidget
 {
@@ -19,22 +20,23 @@ class AccountBalanceChart extends ChartWidget
 
     protected function getData(): array
     {
-        $accountBalance = Trend::model(Account::class)
-            ->between(
-                start: now()->startOfYear(),
-                end: now()->endOfYear(),
-            )
-            ->perMonth()
-            ->sum('balance');
-
-        $debtBalance = Trend::model(Debt::class)
-            ->between(
-                start: now()->startOfYear(),
-                end: now()->endOfYear(),
-            )
-            ->dateColumn('due_date')
-            ->perMonth()
-            ->sum('current_balance');
+        [$accountBalance, $debtBalance] = Concurrency::run([
+            fn () => Trend::model(Account::class)
+                ->between(
+                    start: now()->startOfYear(),
+                    end: now()->endOfYear(),
+                )
+                ->perMonth()
+                ->sum('balance'),
+            fn () => Trend::model(Debt::class)
+                ->between(
+                    start: now()->startOfYear(),
+                    end: now()->endOfYear(),
+                )
+                ->dateColumn('due_date')
+                ->perMonth()
+                ->sum('current_balance'),
+        ]);
 
         return [
             'datasets' => [
