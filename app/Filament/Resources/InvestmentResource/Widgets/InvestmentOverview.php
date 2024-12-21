@@ -12,9 +12,9 @@ class InvestmentOverview extends BaseWidget
     protected function getStats(): array
     {
         [$totalInvestments, $positive, $negative] = Concurrency::run([
-            fn() => Investment::query()->get()->sum('marketValue'),
-            fn() => Investment::query()->whereColumn('current_price', '>', 'purchase_price')->count(),
-            fn() => Investment::query()->whereColumn('current_price', '<', 'purchase_price')->count(),
+            fn () => Investment::query()->get()->sum('marketValue'),
+            fn () => Investment::query()->whereColumn('current_price', '>', 'purchase_price')->count(),
+            fn () => Investment::query()->whereColumn('current_price', '<', 'purchase_price')->count(),
         ]);
 
         return [
