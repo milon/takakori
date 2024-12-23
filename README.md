@@ -38,6 +38,11 @@ php artisan queue:work --once
 php artisan queue:listen
 ```
 
+You can also run the following command to do everything at once-
+```bash 
+composer run dev
+```
+
 ## Docker
 
 Alternatively you can run this app with docker. Make sure you have docker and docker-compose installed in your computer. We used a tool called [Laravel Sail](https://laravel.com/docs/11.x/sail), which is a wrapper around `docker-compose`. To install the docker dependency run the following command-
