@@ -15,13 +15,7 @@ enum InvestmentType: string implements HasColor, HasLabel
 
     public function getLabel(): ?string
     {
-        return match ($this) {
-            self::Stocks => 'Stocks',
-            self::Bonds => 'Bonds',
-            self::MitualFunds => 'Mitual Funds',
-            self::RealEstate => 'Real Estate',
-            self::Crypto => 'Crypto',
-        };
+        return str($this)->headline();
     }
 
     public function getColor(): string | array | null

@@ -16,13 +16,7 @@ enum DebtType: string implements HasColor, HasIcon, HasLabel
 
     public function getLabel(): ?string
     {
-        return match ($this) {
-            self::PersonalLoan => 'Personal Loan',
-            self::Mortgage => 'Mortgage',
-            self::CreditCard => 'Credit Card',
-            self::AutoLoan => 'Auto Loan',
-            self::Other => 'Other',
-        };
+        return str($this->value)->headline();
     }
 
     public function getIcon(): ?string
