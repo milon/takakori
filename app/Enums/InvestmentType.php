@@ -15,7 +15,7 @@ enum InvestmentType: string implements HasColor, HasLabel
 
     public function getLabel(): ?string
     {
-        return str($this)->headline();
+        return str($this->value)->headline();
     }
 
     public function getColor(): string | array | null

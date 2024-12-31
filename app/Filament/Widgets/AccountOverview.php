@@ -7,6 +7,7 @@ use App\Models\Debt;
 use Filament\Widgets\StatsOverviewWidget as BaseWidget;
 use Filament\Widgets\StatsOverviewWidget\Stat;
 use Illuminate\Support\Facades\Concurrency;
+use Illuminate\Support\Number;
 
 class AccountOverview extends BaseWidget
 {
@@ -19,9 +20,9 @@ class AccountOverview extends BaseWidget
         ]);
 
         return [
-            Stat::make('Number of Accounts', $numberOfAccounts),
-            Stat::make('Total Asset', $totalAsset),
-            Stat::make('Total Debt', $totalDebt),
+            Stat::make('Number of Accounts', Number::format($numberOfAccounts)),
+            Stat::make('Total Asset', '$' . Number::format($totalAsset, 2)),
+            Stat::make('Total Debt', '$' . Number::format($totalDebt, 2)),
         ];
     }
 }
