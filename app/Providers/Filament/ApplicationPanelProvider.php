@@ -2,6 +2,7 @@
 
 namespace App\Providers\Filament;
 
+use Devonab\FilamentEasyFooter\EasyFooterPlugin;
 use Filament\Http\Middleware\Authenticate;
 use Filament\Http\Middleware\DisableBladeIconComponents;
 use Filament\Http\Middleware\DispatchServingFilamentEvent;
@@ -15,6 +16,7 @@ use Illuminate\Foundation\Http\Middleware\VerifyCsrfToken;
 use Illuminate\Routing\Middleware\SubstituteBindings;
 use Illuminate\Session\Middleware\AuthenticateSession;
 use Illuminate\Session\Middleware\StartSession;
+use Illuminate\Support\HtmlString;
 use Illuminate\View\Middleware\ShareErrorsFromSession;
 use Jeffgreco13\FilamentBreezy\BreezyCore;
 
@@ -70,6 +72,12 @@ class ApplicationPanelProvider extends PanelProvider
                             ->disableLabel()
                             ->circleCropper()
                     ),
+                EasyFooterPlugin::make()
+                    ->withLinks([
+                        ['title' => 'Nuruzzaman Milon', 'url' => 'https://milon.im'],
+                        ['title' => 'GitHub', 'url' => 'https://github.com/milon/takakori'],
+                    ])
+                    ->withFooterPosition('footer'),
             ]);
     }
 }
