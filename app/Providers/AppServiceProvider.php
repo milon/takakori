@@ -6,6 +6,7 @@ use Filament\Actions\CreateAction;
 use Filament\Actions\EditAction;
 use Filament\Forms\Components\DatePicker;
 use Filament\Forms\Components\DateTimePicker;
+use Filament\Forms\Components\Toggle;
 use Filament\Tables\Actions\CreateAction as TableCreateAction;
 use Filament\Tables\Actions\EditAction as TableEditAction;
 use Illuminate\Support\ServiceProvider;
@@ -33,5 +34,6 @@ class AppServiceProvider extends ServiceProvider
 
         DatePicker::configureUsing(fn (DatePicker $datePicker) => $datePicker->native(false));
         DateTimePicker::configureUsing(fn (DateTimePicker $dateTimePicker) => $dateTimePicker->native(false));
+        Toggle::configureUsing(fn (Toggle $toggle) => $toggle->inline(false));
     }
 }
