@@ -68,6 +68,7 @@ class TransactionResource extends Resource
             ])
             ->actions([
                 Tables\Actions\EditAction::make()->after(function (Model $record, array $data) {
+                    /** @var Transaction $record */
                     $account = $record->account;
                     $categoryType = $record->category->type;
 

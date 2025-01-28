@@ -84,6 +84,7 @@ class CategoryResource extends Resource
 
     public static function getGlobalSearchResultTitle(Model $record): string | Htmlable
     {
+        /** @var Category $record */
         return $record->name;
     }
 

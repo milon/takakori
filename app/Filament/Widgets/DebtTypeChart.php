@@ -13,6 +13,7 @@ class DebtTypeChart extends ChartWidget
 
     protected function getData(): array
     {
+        /** @var \Illuminate\Support\Collection<int, \App\Models\Debt> $data */
         $data = Debt::query()
             ->selectRaw('sum(current_balance) as balance, type')
             ->groupBy('type')

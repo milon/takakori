@@ -101,6 +101,7 @@ class DebtResource extends Resource
 
     public static function getGlobalSearchResultTitle(Model $record): string | Htmlable
     {
+        /** @var Debt $record */
         return sprintf('%s - %s', $record->name, $record->type->value);
     }
 

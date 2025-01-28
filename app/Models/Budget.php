@@ -6,6 +6,37 @@ use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
 
+/**
+ * 
+ *
+ * @property int $id
+ * @property int $user_id
+ * @property int $category_id
+ * @property int $currency_id
+ * @property int $amount
+ * @property \Illuminate\Support\Carbon $start_date
+ * @property \Illuminate\Support\Carbon $end_date
+ * @property \Illuminate\Support\Carbon|null $created_at
+ * @property \Illuminate\Support\Carbon|null $updated_at
+ * @property-read \App\Models\Category|null $category
+ * @property-read \App\Models\Currency|null $currency
+ * @property-read \App\Models\TFactory|null $use_factory
+ * @property-read \App\Models\User|null $user
+ * @method static \Database\Factories\BudgetFactory factory($count = null, $state = [])
+ * @method static \Illuminate\Database\Eloquent\Builder<static>|Budget newModelQuery()
+ * @method static \Illuminate\Database\Eloquent\Builder<static>|Budget newQuery()
+ * @method static \Illuminate\Database\Eloquent\Builder<static>|Budget query()
+ * @method static \Illuminate\Database\Eloquent\Builder<static>|Budget whereAmount($value)
+ * @method static \Illuminate\Database\Eloquent\Builder<static>|Budget whereCategoryId($value)
+ * @method static \Illuminate\Database\Eloquent\Builder<static>|Budget whereCreatedAt($value)
+ * @method static \Illuminate\Database\Eloquent\Builder<static>|Budget whereCurrencyId($value)
+ * @method static \Illuminate\Database\Eloquent\Builder<static>|Budget whereEndDate($value)
+ * @method static \Illuminate\Database\Eloquent\Builder<static>|Budget whereId($value)
+ * @method static \Illuminate\Database\Eloquent\Builder<static>|Budget whereStartDate($value)
+ * @method static \Illuminate\Database\Eloquent\Builder<static>|Budget whereUpdatedAt($value)
+ * @method static \Illuminate\Database\Eloquent\Builder<static>|Budget whereUserId($value)
+ * @mixin \Eloquent
+ */
 class Budget extends Model
 {
     use HasFactory;

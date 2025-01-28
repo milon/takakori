@@ -76,6 +76,7 @@ class TagResource extends Resource
 
     public static function getGlobalSearchResultTitle(Model $record): string | Htmlable
     {
+        /** @var Tag $record */
         return $record->name;
     }
 

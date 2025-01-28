@@ -121,7 +121,7 @@ class InvestmentResource extends Resource
     public static function getWidgets(): array
     {
         return [
-            InvestmentOverview::make(),
+            InvestmentOverview::class,
         ];
     }
 
@@ -144,6 +144,7 @@ class InvestmentResource extends Resource
 
     public static function getGlobalSearchResultTitle(Model $record): string | Htmlable
     {
+        /** @var Investment $record */
         return sprintf('%s - %s', $record->name, $record->type->value);
     }
 

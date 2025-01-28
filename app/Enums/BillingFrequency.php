@@ -15,7 +15,7 @@ enum BillingFrequency: string implements HasLabel
     case SemiAnnually = 'semi-annually';
     case Annually = 'annually';
 
-    public function getLabel(): ?string
+    public function getLabel(): string
     {
         return match ($this) {
             self::Onetime => 'Onetime',

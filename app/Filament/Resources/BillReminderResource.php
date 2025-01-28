@@ -102,7 +102,10 @@ class BillReminderResource extends Resource
 
     public static function getGlobalSearchResultTitle(Model $record): string | Htmlable
     {
-        return sprintf('%s - %s', $record->name, $record->frequency->value);
+        /** @var BillReminder $billReminder */
+        $billReminder = $record;
+
+        return sprintf('%s - %s', $billReminder->name, $billReminder->frequency->value);
     }
 
     public static function getGloballySearchableAttributes(): array

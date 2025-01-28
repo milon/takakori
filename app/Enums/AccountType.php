@@ -11,12 +11,12 @@ enum AccountType: string implements HasColor, HasLabel
     case Checking = 'checking';
     case CreditCard = 'credit-card';
 
-    public function getLabel(): ?string
+    public function getLabel(): string
     {
         return str($this->value)->headline();
     }
 
-    public function getColor(): string | array | null
+    public function getColor(): string
     {
         return match ($this) {
             self::Savings => 'success',

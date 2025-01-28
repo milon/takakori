@@ -13,12 +13,12 @@ enum InvestmentType: string implements HasColor, HasLabel
     case RealEstate = 'real-estate';
     case Crypto = 'crypto';
 
-    public function getLabel(): ?string
+    public function getLabel(): string
     {
         return str($this->value)->headline();
     }
 
-    public function getColor(): string | array | null
+    public function getColor(): string
     {
         return match ($this) {
             self::Stocks => '#eb4034',

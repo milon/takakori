@@ -8,6 +8,44 @@ use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
 use Illuminate\Database\Eloquent\Relations\MorphToMany;
 
+/**
+ * 
+ *
+ * @property int $id
+ * @property int $user_id
+ * @property int $account_id
+ * @property int $category_id
+ * @property int $currency_id
+ * @property int $amount
+ * @property BillingFrequency $frequency
+ * @property \Illuminate\Support\Carbon $start_date
+ * @property \Illuminate\Support\Carbon|null $end_date
+ * @property \Illuminate\Support\Carbon|null $created_at
+ * @property \Illuminate\Support\Carbon|null $updated_at
+ * @property-read \App\Models\Account|null $account
+ * @property-read \App\Models\Category|null $category
+ * @property-read \App\Models\Currency|null $currency
+ * @property-read \App\Models\TFactory|null $use_factory
+ * @property-read \Illuminate\Database\Eloquent\Collection<int, \App\Models\Tag> $tags
+ * @property-read int|null $tags_count
+ * @property-read \App\Models\User|null $user
+ * @method static \Database\Factories\RecurringTransactionFactory factory($count = null, $state = [])
+ * @method static \Illuminate\Database\Eloquent\Builder<static>|RecurringTransaction newModelQuery()
+ * @method static \Illuminate\Database\Eloquent\Builder<static>|RecurringTransaction newQuery()
+ * @method static \Illuminate\Database\Eloquent\Builder<static>|RecurringTransaction query()
+ * @method static \Illuminate\Database\Eloquent\Builder<static>|RecurringTransaction whereAccountId($value)
+ * @method static \Illuminate\Database\Eloquent\Builder<static>|RecurringTransaction whereAmount($value)
+ * @method static \Illuminate\Database\Eloquent\Builder<static>|RecurringTransaction whereCategoryId($value)
+ * @method static \Illuminate\Database\Eloquent\Builder<static>|RecurringTransaction whereCreatedAt($value)
+ * @method static \Illuminate\Database\Eloquent\Builder<static>|RecurringTransaction whereCurrencyId($value)
+ * @method static \Illuminate\Database\Eloquent\Builder<static>|RecurringTransaction whereEndDate($value)
+ * @method static \Illuminate\Database\Eloquent\Builder<static>|RecurringTransaction whereFrequency($value)
+ * @method static \Illuminate\Database\Eloquent\Builder<static>|RecurringTransaction whereId($value)
+ * @method static \Illuminate\Database\Eloquent\Builder<static>|RecurringTransaction whereStartDate($value)
+ * @method static \Illuminate\Database\Eloquent\Builder<static>|RecurringTransaction whereUpdatedAt($value)
+ * @method static \Illuminate\Database\Eloquent\Builder<static>|RecurringTransaction whereUserId($value)
+ * @mixin \Eloquent
+ */
 class RecurringTransaction extends Model
 {
     use HasFactory;

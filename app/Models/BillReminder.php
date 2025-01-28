@@ -7,6 +7,41 @@ use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
 
+/**
+ * 
+ *
+ * @property int $id
+ * @property int $user_id
+ * @property int $category_id
+ * @property int $currency_id
+ * @property string $name
+ * @property int $amount
+ * @property \Illuminate\Support\Carbon $due_date
+ * @property BillingFrequency $frequency
+ * @property bool $is_paid
+ * @property \Illuminate\Support\Carbon|null $created_at
+ * @property \Illuminate\Support\Carbon|null $updated_at
+ * @property-read \App\Models\Category|null $category
+ * @property-read \App\Models\Currency|null $currency
+ * @property-read \App\Models\TFactory|null $use_factory
+ * @property-read \App\Models\User|null $user
+ * @method static \Database\Factories\BillReminderFactory factory($count = null, $state = [])
+ * @method static \Illuminate\Database\Eloquent\Builder<static>|BillReminder newModelQuery()
+ * @method static \Illuminate\Database\Eloquent\Builder<static>|BillReminder newQuery()
+ * @method static \Illuminate\Database\Eloquent\Builder<static>|BillReminder query()
+ * @method static \Illuminate\Database\Eloquent\Builder<static>|BillReminder whereAmount($value)
+ * @method static \Illuminate\Database\Eloquent\Builder<static>|BillReminder whereCategoryId($value)
+ * @method static \Illuminate\Database\Eloquent\Builder<static>|BillReminder whereCreatedAt($value)
+ * @method static \Illuminate\Database\Eloquent\Builder<static>|BillReminder whereCurrencyId($value)
+ * @method static \Illuminate\Database\Eloquent\Builder<static>|BillReminder whereDueDate($value)
+ * @method static \Illuminate\Database\Eloquent\Builder<static>|BillReminder whereFrequency($value)
+ * @method static \Illuminate\Database\Eloquent\Builder<static>|BillReminder whereId($value)
+ * @method static \Illuminate\Database\Eloquent\Builder<static>|BillReminder whereIsPaid($value)
+ * @method static \Illuminate\Database\Eloquent\Builder<static>|BillReminder whereName($value)
+ * @method static \Illuminate\Database\Eloquent\Builder<static>|BillReminder whereUpdatedAt($value)
+ * @method static \Illuminate\Database\Eloquent\Builder<static>|BillReminder whereUserId($value)
+ * @mixin \Eloquent
+ */
 class BillReminder extends Model
 {
     use HasFactory;

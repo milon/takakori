@@ -124,6 +124,9 @@ class AccountResource extends Resource
 
     public static function getGlobalSearchResultTitle(Model $record): string | Htmlable
     {
-        return sprintf('%s - %s', $record->name, $record->number);
+        /** @var Account $account */
+        $account = $record;
+        
+        return sprintf('%s - %s', $account->name, $account->number);
     }
 }

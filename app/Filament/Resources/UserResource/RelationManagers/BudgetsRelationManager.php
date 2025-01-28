@@ -2,7 +2,7 @@
 
 namespace App\Filament\Resources\UserResource\RelationManagers;
 
-use App\Filament\Resources\BudgetResource\Forms\BudgetFrom;
+use App\Filament\Resources\BudgetResource\Forms\BudgetForm;
 use Filament\Forms\Form;
 use Filament\Resources\RelationManagers\RelationManager;
 use Filament\Tables;
@@ -15,8 +15,7 @@ class BudgetsRelationManager extends RelationManager
 
     public function form(Form $form): Form
     {
-        return $form
-            ->schema(BudgetFrom::getForm());
+        return $form->schema(BudgetForm::getForm());
     }
 
     public function table(Table $table): Table

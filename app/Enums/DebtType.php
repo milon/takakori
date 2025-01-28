@@ -14,12 +14,12 @@ enum DebtType: string implements HasColor, HasIcon, HasLabel
     case AutoLoan = 'auto-loan';
     case Other = 'other';
 
-    public function getLabel(): ?string
+    public function getLabel(): string
     {
         return str($this->value)->headline();
     }
 
-    public function getIcon(): ?string
+    public function getIcon(): string
     {
         return match ($this) {
             self::PersonalLoan => 'fas-sack-dollar',
@@ -30,7 +30,7 @@ enum DebtType: string implements HasColor, HasIcon, HasLabel
         };
     }
 
-    public function getColor(): string | array | null
+    public function getColor(): string
     {
         return match ($this) {
             self::PersonalLoan => '#eb4034',

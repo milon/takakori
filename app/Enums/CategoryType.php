@@ -10,12 +10,12 @@ enum CategoryType: string implements HasColor, HasLabel
     case Income = 'income';
     case Expense = 'expense';
 
-    public function getLabel(): ?string
+    public function getLabel(): string
     {
         return str($this->value)->title();
     }
 
-    public function getColor(): string | array | null
+    public function getColor(): string
     {
         return match ($this) {
             self::Income => 'success',

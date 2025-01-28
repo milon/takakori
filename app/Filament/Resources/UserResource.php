@@ -149,6 +149,7 @@ class UserResource extends Resource
 
     public static function getGlobalSearchResultTitle(Model $record): string | Htmlable
     {
+        /** @var User $record */
         return sprintf('%s - %s', $record->name, $record->email);
     }
 
