@@ -458,16 +458,16 @@
         },
         {
             "name": "danharrin/livewire-rate-limiting",
-            "version": "v2.0.1",
+            "version": "v2.0.2",
             "source": {
                 "type": "git",
                 "url": "https://github.com/danharrin/livewire-rate-limiting.git",
-                "reference": "18680be2b4d3d901d8e453560f77810145492b34"
+                "reference": "003817754b11f7189b9bd1252c27f2fbb4505a2d"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/danharrin/livewire-rate-limiting/zipball/18680be2b4d3d901d8e453560f77810145492b34",
-                "reference": "18680be2b4d3d901d8e453560f77810145492b34",
+                "url": "https://api.github.com/repos/danharrin/livewire-rate-limiting/zipball/003817754b11f7189b9bd1252c27f2fbb4505a2d",
+                "reference": "003817754b11f7189b9bd1252c27f2fbb4505a2d",
                 "shasum": ""
             },
             "require": {
@@ -508,7 +508,7 @@
                     "type": "github"
                 }
             ],
-            "time": "2025-01-22T14:01:35+00:00"
+            "time": "2025-02-14T10:47:35+00:00"
         },
         {
             "name": "dasprid/enum",
