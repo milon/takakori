@@ -65,6 +65,7 @@ class ApplicationPanelProvider extends PanelProvider
             ->plugins([
                 BreezyCore::make()
                     ->myProfile(hasAvatars: true)
+                    ->enableTwoFactorAuthentication(force: false)
                     ->avatarUploadComponent(
                         fn ($fileUpload) => $fileUpload
                             ->avatar()
