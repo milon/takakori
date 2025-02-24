@@ -13,8 +13,7 @@
         "laravel/framework": "^11.9",
         "laravel/tinker": "^2.9",
         "owenvoke/blade-fontawesome": "^2.6",
-        "pelmered/filament-money-field": "^1.4",
-        "stephenjude/filament-debugger": "^3.1"
+        "pelmered/filament-money-field": "^1.4"
     },
     "require-dev": {
         "barryvdh/laravel-ide-helper": "^3.5",
