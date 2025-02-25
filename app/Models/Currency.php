@@ -7,8 +7,6 @@ use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\HasMany;
 
 /**
- * 
- *
  * @property int $id
  * @property string $name
  * @property string $code
@@ -23,6 +21,7 @@ use Illuminate\Database\Eloquent\Relations\HasMany;
  * @property-read \App\Models\TFactory|null $use_factory
  * @property-read \Illuminate\Database\Eloquent\Collection<int, \App\Models\Investment> $investments
  * @property-read int|null $investments_count
+ *
  * @method static \Database\Factories\CurrencyFactory factory($count = null, $state = [])
  * @method static \Illuminate\Database\Eloquent\Builder<static>|Currency newModelQuery()
  * @method static \Illuminate\Database\Eloquent\Builder<static>|Currency newQuery()
@@ -32,6 +31,7 @@ use Illuminate\Database\Eloquent\Relations\HasMany;
  * @method static \Illuminate\Database\Eloquent\Builder<static>|Currency whereId($value)
  * @method static \Illuminate\Database\Eloquent\Builder<static>|Currency whereName($value)
  * @method static \Illuminate\Database\Eloquent\Builder<static>|Currency whereUpdatedAt($value)
+ *
  * @mixin \Eloquent
  */
 class Currency extends Model

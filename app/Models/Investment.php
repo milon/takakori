@@ -9,8 +9,6 @@ use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
 
 /**
- * 
- *
  * @property int $id
  * @property int $user_id
  * @property string $name
@@ -27,6 +25,7 @@ use Illuminate\Database\Eloquent\Relations\BelongsTo;
  * @property-read mixed $market_value
  * @property-read mixed $performance
  * @property-read \App\Models\User|null $user
+ *
  * @method static \Database\Factories\InvestmentFactory factory($count = null, $state = [])
  * @method static \Illuminate\Database\Eloquent\Builder<static>|Investment newModelQuery()
  * @method static \Illuminate\Database\Eloquent\Builder<static>|Investment newQuery()
@@ -42,6 +41,7 @@ use Illuminate\Database\Eloquent\Relations\BelongsTo;
  * @method static \Illuminate\Database\Eloquent\Builder<static>|Investment whereType($value)
  * @method static \Illuminate\Database\Eloquent\Builder<static>|Investment whereUpdatedAt($value)
  * @method static \Illuminate\Database\Eloquent\Builder<static>|Investment whereUserId($value)
+ *
  * @mixin \Eloquent
  */
 class Investment extends Model

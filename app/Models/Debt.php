@@ -8,8 +8,6 @@ use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
 
 /**
- * 
- *
  * @property int $id
  * @property int $user_id
  * @property string $name
@@ -25,6 +23,7 @@ use Illuminate\Database\Eloquent\Relations\BelongsTo;
  * @property-read \App\Models\Currency|null $currency
  * @property-read \App\Models\TFactory|null $use_factory
  * @property-read \App\Models\User|null $user
+ *
  * @method static \Database\Factories\DebtFactory factory($count = null, $state = [])
  * @method static \Illuminate\Database\Eloquent\Builder<static>|Debt newModelQuery()
  * @method static \Illuminate\Database\Eloquent\Builder<static>|Debt newQuery()
@@ -41,6 +40,7 @@ use Illuminate\Database\Eloquent\Relations\BelongsTo;
  * @method static \Illuminate\Database\Eloquent\Builder<static>|Debt whereType($value)
  * @method static \Illuminate\Database\Eloquent\Builder<static>|Debt whereUpdatedAt($value)
  * @method static \Illuminate\Database\Eloquent\Builder<static>|Debt whereUserId($value)
+ *
  * @mixin \Eloquent
  */
 class Debt extends Model
