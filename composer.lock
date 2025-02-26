@@ -562,16 +562,16 @@
         },
         {
             "name": "devonab/filament-easy-footer",
-            "version": "v1.0.6",
+            "version": "v1.1.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/Devonab/filament-easy-footer.git",
-                "reference": "ffb893e25b4b2956d2225818e84977a7ac055e86"
+                "reference": "8f4ab1fd7524c99417f3d934d1274f1cae0ac79f"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/Devonab/filament-easy-footer/zipball/ffb893e25b4b2956d2225818e84977a7ac055e86",
-                "reference": "ffb893e25b4b2956d2225818e84977a7ac055e86",
+                "url": "https://api.github.com/repos/Devonab/filament-easy-footer/zipball/8f4ab1fd7524c99417f3d934d1274f1cae0ac79f",
+                "reference": "8f4ab1fd7524c99417f3d934d1274f1cae0ac79f",
                 "shasum": ""
             },
             "require": {
@@ -637,7 +637,7 @@
                     "type": "github"
                 }
             ],
-            "time": "2025-01-16T10:08:11+00:00"
+            "time": "2025-02-26T19:16:33+00:00"
         },
         {
             "name": "dflydev/dot-access-data",
