@@ -2421,16 +2421,16 @@
         },
         {
             "name": "kirschbaum-development/eloquent-power-joins",
-            "version": "4.2.4",
+            "version": "4.2.5",
             "source": {
                 "type": "git",
                 "url": "https://github.com/kirschbaum-development/eloquent-power-joins.git",
-                "reference": "4a8012cef7abed8ac3633a180c69138a228b6c4c"
+                "reference": "96e1a061ab97f36afb8ccfcd6c02b07f702d36e6"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/kirschbaum-development/eloquent-power-joins/zipball/4a8012cef7abed8ac3633a180c69138a228b6c4c",
-                "reference": "4a8012cef7abed8ac3633a180c69138a228b6c4c",
+                "url": "https://api.github.com/repos/kirschbaum-development/eloquent-power-joins/zipball/96e1a061ab97f36afb8ccfcd6c02b07f702d36e6",
+                "reference": "96e1a061ab97f36afb8ccfcd6c02b07f702d36e6",
                 "shasum": ""
             },
             "require": {
@@ -2478,9 +2478,9 @@
             ],
             "support": {
                 "issues": "https://github.com/kirschbaum-development/eloquent-power-joins/issues",
-                "source": "https://github.com/kirschbaum-development/eloquent-power-joins/tree/4.2.4"
+                "source": "https://github.com/kirschbaum-development/eloquent-power-joins/tree/4.2.5"
             },
-            "time": "2025-05-19T14:14:41+00:00"
+            "time": "2025-07-10T15:26:42+00:00"
         },
         {
             "name": "laravel/framework",
