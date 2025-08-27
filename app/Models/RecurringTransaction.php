@@ -9,8 +9,6 @@ use Illuminate\Database\Eloquent\Relations\BelongsTo;
 use Illuminate\Database\Eloquent\Relations\MorphToMany;
 
 /**
- * 
- *
  * @property int $id
  * @property int $user_id
  * @property int $account_id
@@ -29,6 +27,7 @@ use Illuminate\Database\Eloquent\Relations\MorphToMany;
  * @property-read \Illuminate\Database\Eloquent\Collection<int, \App\Models\Tag> $tags
  * @property-read int|null $tags_count
  * @property-read \App\Models\User|null $user
+ *
  * @method static \Database\Factories\RecurringTransactionFactory factory($count = null, $state = [])
  * @method static \Illuminate\Database\Eloquent\Builder<static>|RecurringTransaction newModelQuery()
  * @method static \Illuminate\Database\Eloquent\Builder<static>|RecurringTransaction newQuery()
@@ -44,6 +43,7 @@ use Illuminate\Database\Eloquent\Relations\MorphToMany;
  * @method static \Illuminate\Database\Eloquent\Builder<static>|RecurringTransaction whereStartDate($value)
  * @method static \Illuminate\Database\Eloquent\Builder<static>|RecurringTransaction whereUpdatedAt($value)
  * @method static \Illuminate\Database\Eloquent\Builder<static>|RecurringTransaction whereUserId($value)
+ *
  * @mixin \Eloquent
  */
 class RecurringTransaction extends Model

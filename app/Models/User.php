@@ -11,8 +11,6 @@ use Illuminate\Support\Facades\Storage;
 use Jeffgreco13\FilamentBreezy\Traits\TwoFactorAuthenticatable;
 
 /**
- * 
- *
  * @property int $id
  * @property string $name
  * @property string $email
@@ -42,6 +40,7 @@ use Jeffgreco13\FilamentBreezy\Traits\TwoFactorAuthenticatable;
  * @property-read int|null $recurring_transactions_count
  * @property-read \Illuminate\Database\Eloquent\Collection<int, \App\Models\Transaction> $transactions
  * @property-read int|null $transactions_count
+ *
  * @method static \Database\Factories\UserFactory factory($count = null, $state = [])
  * @method static \Illuminate\Database\Eloquent\Builder<static>|User newModelQuery()
  * @method static \Illuminate\Database\Eloquent\Builder<static>|User newQuery()
@@ -56,6 +55,7 @@ use Jeffgreco13\FilamentBreezy\Traits\TwoFactorAuthenticatable;
  * @method static \Illuminate\Database\Eloquent\Builder<static>|User wherePassword($value)
  * @method static \Illuminate\Database\Eloquent\Builder<static>|User whereRememberToken($value)
  * @method static \Illuminate\Database\Eloquent\Builder<static>|User whereUpdatedAt($value)
+ *
  * @mixin \Eloquent
  */
 class User extends Authenticatable implements HasAvatar

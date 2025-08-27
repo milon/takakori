@@ -126,7 +126,7 @@ class AccountResource extends Resource
     {
         /** @var Account $account */
         $account = $record;
-        
+
         return sprintf('%s - %s', $account->name, $account->number);
     }
 }

@@ -7,8 +7,6 @@ use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
 
 /**
- * 
- *
  * @property int $id
  * @property int $user_id
  * @property int $category_id
@@ -22,6 +20,7 @@ use Illuminate\Database\Eloquent\Relations\BelongsTo;
  * @property-read \App\Models\Currency|null $currency
  * @property-read \App\Models\TFactory|null $use_factory
  * @property-read \App\Models\User|null $user
+ *
  * @method static \Database\Factories\BudgetFactory factory($count = null, $state = [])
  * @method static \Illuminate\Database\Eloquent\Builder<static>|Budget newModelQuery()
  * @method static \Illuminate\Database\Eloquent\Builder<static>|Budget newQuery()
@@ -35,6 +34,7 @@ use Illuminate\Database\Eloquent\Relations\BelongsTo;
  * @method static \Illuminate\Database\Eloquent\Builder<static>|Budget whereStartDate($value)
  * @method static \Illuminate\Database\Eloquent\Builder<static>|Budget whereUpdatedAt($value)
  * @method static \Illuminate\Database\Eloquent\Builder<static>|Budget whereUserId($value)
+ *
  * @mixin \Eloquent
  */
 class Budget extends Model

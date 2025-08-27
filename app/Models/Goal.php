@@ -7,8 +7,6 @@ use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
 
 /**
- * 
- *
  * @property int $id
  * @property int $user_id
  * @property int $currency_id
@@ -21,6 +19,7 @@ use Illuminate\Database\Eloquent\Relations\BelongsTo;
  * @property-read \App\Models\Currency|null $currency
  * @property-read \App\Models\TFactory|null $use_factory
  * @property-read \App\Models\User|null $user
+ *
  * @method static \Database\Factories\GoalFactory factory($count = null, $state = [])
  * @method static \Illuminate\Database\Eloquent\Builder<static>|Goal newModelQuery()
  * @method static \Illuminate\Database\Eloquent\Builder<static>|Goal newQuery()
@@ -34,6 +33,7 @@ use Illuminate\Database\Eloquent\Relations\BelongsTo;
  * @method static \Illuminate\Database\Eloquent\Builder<static>|Goal whereTargetAmount($value)
  * @method static \Illuminate\Database\Eloquent\Builder<static>|Goal whereUpdatedAt($value)
  * @method static \Illuminate\Database\Eloquent\Builder<static>|Goal whereUserId($value)
+ *
  * @mixin \Eloquent
  */
 class Goal extends Model
